@@ -20,6 +20,7 @@ class Item < ApplicationRecord
   has_many :loans
   has_many :borrowers, through: :loans, source: :user
 
+  validates :title, presence: true
   def is_available?
     # Check to see if item's loan array is empty.
       # If empty, item is available for loan
