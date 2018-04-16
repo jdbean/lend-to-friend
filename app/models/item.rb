@@ -19,4 +19,24 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :loans
   has_many :borrowers, through: :loans, source: :user
-end
+
+  validates :title, presence: true
+  def is_available?
+    # Check to see if item's loan array is empty.
+      # If empty, item is available for loan
+      # If item has loans, it is unavailable if any loan has not been returned
+      # If item has loans and all of them have been returned, item is available.
+    if !self.loans.empty?
+      self.loans.each do |loan|
+        if !loan.returned
+          return false
+        end
+      end
+    end
+    return true
+  end
+
+  def self.last_nine
+    #returns the last 9 items added to the DB
+    self.last(9)
+  end
