@@ -34,3 +34,8 @@ class Item < ApplicationRecord
     end
     return true
   end
+
+  def self.last_nine
+    #returns the last 9 items added to the DB
+    self.last(9)
+  end
