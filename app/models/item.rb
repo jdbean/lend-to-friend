@@ -40,3 +40,4 @@ class Item < ApplicationRecord
     #returns the last 9 items added to the DB
     self.last(9)
   end
+end

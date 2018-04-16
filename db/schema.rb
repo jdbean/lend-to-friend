@@ -13,20 +13,14 @@
 ActiveRecord::Schema.define(version: 2018_04_16_180439) do
 
   create_table "items", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.integer "user_id"
-    t.string "image"
-    t.string "author"
-    t.string "genre"
-    t.string "description"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "loans", force: :cascade do |t|
     t.integer "item_id"
     t.integer "borrower_id"
-    t.datetime "loaned"
-    t.datetime "returned"
     t.index ["borrower_id"], name: "index_loans_on_borrower_id"
     t.index ["item_id"], name: "index_loans_on_item_id"
   end
@@ -34,12 +28,6 @@ ActiveRecord::Schema.define(version: 2018_04_16_180439) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "avatar"
-    t.string "phone"
-    t.string "streetaddress"
-    t.string "city"
-    t.string "state"
-    t.string "zipcode"
   end
 
 end
