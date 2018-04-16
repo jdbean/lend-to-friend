@@ -1,0 +1,6 @@
+All Users
+
+<% @users.each do |user| %>
+  <img src="<%= user.avatar %>">
+  <%= user.name %>
+<% end %>
