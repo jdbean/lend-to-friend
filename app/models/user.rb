@@ -17,4 +17,12 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
 
+
+  def self.item_count
+    hash = {}
+    self.all.each do |user|
+      hash[user.name] = user.items.length
+    end
+    hash
+  end
 end
