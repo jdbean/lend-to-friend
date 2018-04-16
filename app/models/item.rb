@@ -32,5 +32,5 @@ class Item < ApplicationRecord
         end
       end
     end
-      return true
+    return true
   end
