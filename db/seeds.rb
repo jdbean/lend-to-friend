@@ -18,7 +18,7 @@ Loan.destroy_all
     city: Faker::Address.city,
     state: Faker::Address.state_abbr,
     zipcode: Faker::Address.zip,
-    streetaddress: Faker::Address.street_address,
+    street_address: Faker::Address.street_address,
     avatar: Faker::Avatar.image)
 end
 
@@ -47,5 +47,4 @@ end
     borrower_id: Faker::Number.between(1, 10),
     loaned: Faker::Date.between(6.days.ago, Date.today),
     returned: nil)
-
 end
