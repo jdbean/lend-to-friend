@@ -33,7 +33,7 @@ end
     description: Faker::Lorem.paragraph)
 end
 
-25.times do
+15.times do
   Loan.create(
     item_id: Faker::Number.between(1, 25),
     borrower_id: Faker::Number.between(1, 10),
@@ -47,5 +47,5 @@ end
     borrower_id: Faker::Number.between(1, 10),
     loaned: Faker::Date.between(6.days.ago, Date.today),
     returned: nil)
-  
+
 end
