@@ -16,8 +16,8 @@ Loan.destroy_all
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.cell_phone,
     city: Faker::Address.city,
-    stat: Faker::Address.state_abbr,
-    zipcode: Faker::Address.zip
+    state: Faker::Address.state_abbr,
+    zipcode: Faker::Address.zip,
     streetaddress: Faker::Address.street_address,
     avatar: Faker::Avatar.image)
 end
@@ -36,14 +36,16 @@ end
 25.times do
   Loan.create(
     item_id: Faker::Number.between(1, 25),
-    borrower_id: Faker::Number.between(1, 10)),
+    borrower_id: Faker::Number.between(1, 10),
     loaned: Faker::Date.between(6.days.ago, Date.today),
-    returned: Faker::Date.between(2.days.ago, 1.week.from_now)
+    returned: Faker::Date.between(2.days.ago, 1.week.from_now))
 end
+
 5.times do
   Loan.create(
     item_id: Faker::Number.between(1, 25),
-    borrower_id: Faker::Number.between(1, 10)),
+    borrower_id: Faker::Number.between(1, 10),
     loaned: Faker::Date.between(6.days.ago, Date.today),
-    returned:
+    returned: nil)
+  
 end
