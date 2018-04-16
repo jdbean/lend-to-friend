@@ -1,6 +1,6 @@
 class LoansController < ApplicationController
   before_action :get_loan, only: [:show, :edit, :update]
-  
+
   def index
     @loans = Loan.all
     #analytics page?
@@ -45,7 +45,6 @@ class LoansController < ApplicationController
   end
 
   def loan_params
-    #VICKY: check param names
-    params.require(:loan).permit(:item_id, :borrower_id, :loaned_time, :return_time)
+    params.require(:loan).permit(:item_id, :borrower_id, :loaned, :returned)
   end
 end

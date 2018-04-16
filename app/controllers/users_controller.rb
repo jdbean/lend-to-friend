@@ -50,7 +50,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    # VICKY: DOUBLE CHECK THE PARAM NAMES
     params.require(:user).permit(:name, :email, :phone, :streetaddress, :city, :state, :zipcode, :avatar)
   end
 end

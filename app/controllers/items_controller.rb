@@ -49,7 +49,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    #VICKY: check param names
-    params.require(:item).permit(:name, :picture, :genre, :author, :description, :user_id)
+    params.require(:item).permit(:title, :image, :genre, :author, :description, :user_id)
   end
 end
