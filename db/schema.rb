@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_04_16_180439) do
     t.string "email"
     t.string "avatar"
     t.string "phone"
-    t.string "streetaddress"
+    t.string "street_address"
     t.string "city"
     t.string "state"
     t.string "zipcode"
