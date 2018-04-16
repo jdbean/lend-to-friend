@@ -1,0 +1,15 @@
+<%= @user.name %>
+<img src="<%= @user.avatar %>">
+Email: <%= @user.email %>
+Phone Number: <%= @user.phone %>
+Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= @user.zipcode %>
+
+Shared Items:
+<%= @user.items.each do |book| %>
+  <%= link_to book.title, book %>
+<% end %>
+
+Lent Items:
+<%= @user.borrowed_items.each do |book| %>
+  <%= link_to book.title, book %>
+<% end %>
