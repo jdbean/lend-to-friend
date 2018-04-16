@@ -3,7 +3,7 @@
 # Table name: items
 #
 #  id          :integer          not null, primary key
-#  name        :string
+#  title       :string
 #  user_id     :integer
 #  image       :string
 #  author      :string

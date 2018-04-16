@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_04_16_180439) do
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.integer "user_id"
     t.string "image"
     t.string "author"
