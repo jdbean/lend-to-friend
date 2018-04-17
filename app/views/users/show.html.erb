@@ -7,19 +7,21 @@ Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= 
 
 Shared Items:
 <ul>
-  <% @user.items.each do |book| %>
-    <li><%= link_to book.title, book %></li>
+  <% @user.items.each do |item| %>
+    <li><%= link_to item.title, item %></li>
   <% end %>
 </ul>
 
 Lent Items:
 <ul>
-  <% @user.borrowed_items.each do |book| %>
-    <li><%= link_to book.title, book %></li>
+  <% @user.borrowed_items.each do |item| %>
+    <li><%= link_to item.title, item %></li>
   <% end %>
 </ul>
+<hr>
 
-<%# NOTE: Make sure this creates with current user_id %>
-<%= form_tag new_item_path, method: :get do %>
-  <%= submit_tag "Add an Item" %>
-<% end %>
+<%= link_to 'Add Book', new_user_book_path(@user) %><br>
+<%= link_to 'Add Game', new_user_game_path(@user) %><br>
+<%= link_to 'Add Movie', new_user_movie_path(@user) %><br>
+<%= link_to 'Add Household Item', new_user_household_item_path(@user) %><br>
+<%= link_to 'Add Clothing Item', new_user_clothing_item_path(@user) %>

@@ -1,19 +1,28 @@
 class ItemsController < ApplicationController
   before_action :get_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all
+    @books = Book.all
+    @games = Game.all
+    @movies = Movie.all
+    @household_items = HouseholdItem.all
+    @clothing_items = ClothingItem.all
   end
 
   def show
   end
 
   def new
-    @item = Item.new
+    byebug
+    @user = User.find(params[:user_id])
+    @item = @user.send(set_type.pluralize).new
   end
 
   def create
-    @item = Item.create(item_params)
+    byebug
+    @user = User.find(params[:user_id])
+    @item = @user.send(set_type.pluralize).create(item_params)
 
     if @item.valid?
       redirect_to @item
@@ -27,9 +36,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.update(item_params)
-
-    if @item.valid?
+    if @item.update(item_params)
       redirect_to @item
     else
       flash[:errors] = @item.errors.full_messages
@@ -39,7 +46,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to items_path
+    redirect_to @user
   end
 
   private
@@ -48,7 +55,27 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def set_item
+    @user = User.find(params[:user_id])
+    @item = @user.send(set_type.pluralize).find(params[:id])
+  end
+
+  def set_type
+    case params[:type]
+    when 'Book'
+      'book'
+    when 'Game'
+      'game'
+    when 'Movie'
+      'movie'
+    when 'HouseholdItem'
+      'household_item'
+    when 'ClothingItem'
+      'clothing_item'
+    end
+  end
+
   def item_params
-    params.require(:item).permit(:title, :image, :genre, :author, :description, :user_id)
+    params.require(set_type.to_sym).permit(:title, :image, :genre, :author, :description, :user_id)
   end
 end

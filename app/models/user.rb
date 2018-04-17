@@ -29,6 +29,11 @@ class User < ApplicationRecord
     hash
   end
 
+  def items
+    #returns all items regardless of type
+    self.books
+  end
+
   def get_books
     self.books.where("type = 'Book'")
   end

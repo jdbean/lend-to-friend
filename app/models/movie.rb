@@ -21,4 +21,8 @@ class Movie < Item
   belongs_to :user
   has_many :loans
   has_many :borrowers, through: :loans, source: :user
+
+  def self.model_name
+    Item.model_name
+  end
 end

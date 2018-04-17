@@ -1,5 +1,34 @@
-<h1>All Items</h1>
-<% @items.each do |item| %>
-  <img src=<%= item.image %>><br>
-  <p><%= link_to item.title, item %></p>
+<h1>All Books</h1>
+<% @books.each do |book| %>
+  <img src=<%= book.image %>><br>
+  <p><%= link_to book.title, book %></p>
 <% end %>
+<hr>
+
+<h1>All Games</h1>
+<% @games.each do |game| %>
+  <img src=<%= game.image %>><br>
+  <p><%= link_to game.title, game %></p>
+<% end %>
+<hr>
+
+<h1>All Movies</h1>
+<% @movies.each do |movie| %>
+  <img src=<%= movie.image %>><br>
+  <p><%= link_to movie.title, movie %></p>
+<% end %>
+<hr>
+
+<h1>All Household Items</h1>
+<% @household_items.each do |h| %>
+  <img src=<%= h.image %>><br>
+  <p><%= link_to h.title, h %></p>
+<% end %>
+<hr>
+
+<h1>All Clothing Items</h1>
+<% @clothing_items.each do |c| %>
+  <img src=<%= c.image %>><br>
+  <p><%= link_to c.title, c %></p>
+<% end %>
+<hr>
