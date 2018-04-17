@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_item, only: [:show, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
@@ -36,7 +37,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    @item.update(item_params)
+
+    if @item.valid?
       redirect_to @item
     else
       flash[:errors] = @item.errors.full_messages

@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    # @users = User.all
+    @users = User.order(:name).page params[:page]
   end
 
   def show
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.update(user_params)
+    @user.update(user_params)
 
     if @user.valid?
       redirect_to @user

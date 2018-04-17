@@ -19,14 +19,17 @@ Loan.destroy_all
     state: Faker::Address.state_abbr,
     zipcode: Faker::Address.zip,
     street_address: Faker::Address.street_address,
-    avatar: Faker::Avatar.image)
+    avatar: Faker::Avatar.image,
+    password: "password"
+  )
+
 end
 
 # NOTE: replace name with title
 25.times do
   Item.create(
     title: Faker::Book.title,
-    image: Faker::LoremPixel.image,
+    image: Faker::Fillmurray.image,
     user_id: Faker::Number.between(1, 10),
     author: Faker::Book.author,
     genre: Faker::Book.genre,

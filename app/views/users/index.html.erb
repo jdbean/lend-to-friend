@@ -2,7 +2,29 @@
 <%= column_chart User.item_count, ytitle: "Number of Items Shared", xtitle: "User Name" %>
 
 
-<% @users.each do |user| %>
+<!-- <% @users.each do |user| %>
   <img src=<%= user.avatar %>><br>
   <%= link_to user.name, user %><br>
+<% end %> -->
+
+<% @users.each_slice(3) do |users| %>
+    <div class="row">
+      <% users.each do |user| %>
+        <div class="col-md-4" >
+          <div class="card mb-4 box-shadow h-100"">
+            <img class="card-img-top" src=<%= user.avatar %>>
+            <div class="card-body">
+              <p class="card-text"><%= user.name %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= button_to "view", user, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 <% end %>
+<%= paginate @users, theme: 'twitter-bootstrap-4' %>
