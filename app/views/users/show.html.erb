@@ -20,6 +20,20 @@ Lent Items:
 </ul>
 
 <%# NOTE: Make sure this creates with current user_id %>
-<%= form_tag new_item_path, method: :get do %>
-  <%= submit_tag "Add an Item" %>
+
+
+
+<p>  _____________________________</p>
+
+<% if current_user.id == @user.id %>
+  <p>HI this is you!</p>
+  <p>Private User Stuff and Ability to edit</p>
+  <br/>
+  <%= form_tag new_item_path, method: :get do %>
+    <%= submit_tag "Add an Item" %>
+  <% end %>
+  <br/>
+  <%= form_tag edit_user_path, method: :get do %>
+    <%= submit_tag "Edit Profile" %>
+  <% end %>
 <% end %>
