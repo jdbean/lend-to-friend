@@ -8,6 +8,12 @@ Description: <%= @item.description %>
 <%= form_tag edit_item_path, method: :get do %>
   <%= submit_tag "Update Item" %>
 <% end %>
+<br/>
+<%= form_tag borrow_path, method: :post do %>
+<%= hidden_field_tag 'loan[item_id]', @item.id %>
+  <%= submit_tag "Borrow Item" %>
+<% end %>
+
 
 
 <p> Additions: </p>

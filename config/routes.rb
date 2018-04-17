@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :loans, only: [:index, :show, :new, :create, :edit, :update]
   resources :items
 
+  post "borrow", to: "loans#create", as: "borrow"
+
   # user_root to: 'users#index'
 
 end

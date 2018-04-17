@@ -16,8 +16,12 @@ class LoansController < ApplicationController
   end
 
   def create
-    @loan = Loan.create(loan_params)
 
+    @loan = Loan.new(loan_params)
+    # FIXME: make sure we check for Availability
+    @loan.borrower = current_user
+    @loan.loaned = Time.now
+    @loan.save
     if @loan.valid?
       redirect_to @loan
     else

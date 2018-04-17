@@ -24,14 +24,11 @@ Lent Items:
   <p>HI this is you!</p>
   <p>Private User Stuff and Ability to edit</p>
   <br/>
-  <%= form_tag new_item_path, method: :get do %>
-    <%= submit_tag "Add an Item" %>
-  <% end %>
-  <br/>
+
   <%= form_tag edit_user_path, method: :get do %>
     <%= submit_tag "Edit Profile" %>
   <% end %>
-  
+
   <hr>
   <%= link_to 'Add Book', new_user_book_path(@user) %><br>
   <%= link_to 'Add Game', new_user_game_path(@user) %><br>

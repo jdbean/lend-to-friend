@@ -30,9 +30,9 @@ class Item < ApplicationRecord
       # If empty, item is available for loan
       # If item has loans, it is unavailable if any loan has not been returned
       # If item has loans and all of them have been returned, item is available.
-    if !self.loans.empty?
-      self.loans.each do |loan|
-        if !loan.returned
+    if !self.get_loans.empty?
+      self.get_loans.each do |loan|
+        if !!loan.returned
           return false
         end
       end
@@ -40,6 +40,10 @@ class Item < ApplicationRecord
     return true
   end
 
+  def get_loans
+    Loan.find_by_sql("SELECT * FROM loans WHERE loans.item_id = #{self.id}")
+  end
+  
   def self.last_nine
     #returns the last 9 items added to the DB
     self.last(9)
