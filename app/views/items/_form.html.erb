@@ -1,0 +1,18 @@
+<%= form_with model: @item do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :author %>
+  <%= f.text_field :author %>
+
+  <%= f.label :genre %>
+  <%= f.text_field :genre %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,21 @@
+<h3><%= link_to @item.title, items_path %></h3>
+<img src="<%= @item.image %>"><br/>
+Author: <%= @item.author %><br/>
+Genre: <%= @item.genre %><br/>
+Description: <%= @item.description %>
+<br/>
+<br/>
+<%= form_tag edit_item_path, method: :get do %>
+  <%= submit_tag "Update Item" %>
+<% end %>
+
+
+<p> Additions: </p>
+<ul>
+  <li>Rating</li>
+  <li>Availability</li>
+  <li>Popularity (times rented)</li>
+  <li>Owner</li>
+  <li>Other items Owner lists</li>
+  <li>suggest other options based on this one</li>
+</ul>

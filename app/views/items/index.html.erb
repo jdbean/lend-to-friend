@@ -1,0 +1,6 @@
+
+
+<% @items.each do |item| %>
+  <img src="<%= item.image %>"><br>
+  <p><%= link_to item.title, item %></p>
+<% end %>
