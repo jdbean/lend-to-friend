@@ -1,4 +1,6 @@
 class LoansController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :get_loan, only: [:show, :edit, :update]
 
   def index
