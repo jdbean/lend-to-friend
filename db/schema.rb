@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(version: 2018_04_16_180439) do
 
   create_table "items", force: :cascade do |t|
-    t.string "title"
+    t.string "type"
     t.integer "user_id"
+    t.string "title"
+    t.string "description"
     t.string "image"
     t.string "author"
     t.string "genre"
-    t.string "description"
+    t.index ["type", nil], name: "index_items_on_type_and_user"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 

@@ -3,22 +3,26 @@
 # Table name: items
 #
 #  id          :integer          not null, primary key
-#  title       :string
+#  type        :string
 #  user_id     :integer
+#  title       :string
+#  description :string
 #  image       :string
 #  author      :string
 #  genre       :string
-#  description :string
 #
 # Indexes
 #
-#  index_items_on_user_id  (user_id)
+#  index_items_on_type_and_user  (type,)
+#  index_items_on_user_id        (user_id)
 #
 
 class Item < ApplicationRecord
-  belongs_to :user
-  has_many :loans
-  has_many :borrowers, through: :loans, source: :user
+  scope :books, -> { where(type: 'Book')}
+  scope :games, -> { where(type: 'Game')}
+  scope :movies, -> { where(type: 'Movie')}
+  scope :household_items, -> { where(type: 'HouseholdItem')}
+  scope :clothing_items, -> { where(type: 'ClothingItem')}
 
   validates :title, presence: true
   def is_available?
