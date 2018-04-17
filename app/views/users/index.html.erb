@@ -6,3 +6,5 @@
   <img src=<%= user.avatar %>><br>
   <%= link_to user.name, user %><br>
 <% end %>
+
+<%= paginate @users, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>

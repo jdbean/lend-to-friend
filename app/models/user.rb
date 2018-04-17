@@ -41,7 +41,8 @@ class User < ApplicationRecord
   # validates :name, presence: true
   # validates :email, presence: true, uniqueness: true
 
-
+  paginates_per 5
+  
   def self.item_count
     hash = {}
     self.all.each do |user|

@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    # @users = User.all
+    @users = User.order(:name).page params[:page]
   end
 
   def show
