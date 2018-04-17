@@ -37,7 +37,7 @@
           <a class="dropdown-item" href="#">Add Shared Items</a>
           <a class="dropdown-item" href="#">All Loans</a>
           <a class="dropdown-item" href="#">Manage Account Settings</a>
-          <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item"   %>
+          <%=link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item"%>
 
         </div>
       </li>
@@ -46,7 +46,7 @@
     </nav>
 
     <div class= "container">
-      <% if alert  %>
+      <% if notice  %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
       <% if alert  %>
