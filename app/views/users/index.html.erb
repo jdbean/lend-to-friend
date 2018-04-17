@@ -4,5 +4,5 @@ All Users
 
 <% @users.each do |user| %>
   <img src="<%= user.avatar %>"><br>
-  <%= user.name %>
+  <%= link_to user.name, user %>
 <% end %>
