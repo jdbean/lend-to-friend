@@ -1,4 +1,4 @@
-<img src="<%= @user.avatar %>"><br/>
+<img src=<%= @user.avatar %>><br/>
 <h3><%= link_to @user.name, users_path %></h3>
 Email: <%= @user.email %><br>
 Phone Number: <%= @user.phone %><br/>
@@ -7,14 +7,14 @@ Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= 
 
 Shared Items:
 <ul>
-  <%= @user.items.each do |book| %>
+  <% @user.items.each do |book| %>
     <li><%= link_to book.title, book %></li>
   <% end %>
 </ul>
 
 Lent Items:
 <ul>
-  <%= @user.borrowed_items.each do |book| %>
+  <% @user.borrowed_items.each do |book| %>
     <li><%= link_to book.title, book %></li>
   <% end %>
 </ul>
