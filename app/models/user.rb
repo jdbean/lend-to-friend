@@ -39,8 +39,8 @@ class User < ApplicationRecord
   has_many :books, class_name: 'Item'
   has_many :games, class_name: 'Item'
   has_many :movies, class_name: 'Item'
-  has_many :household_items, class_name: 'Item'
-  has_many :clothing_items, class_name: 'Item'
+  has_many :households, class_name: 'Item'
+  has_many :clothings, class_name: 'Item'
 
   # validates :name, presence: true
   # validates :email, presence: true, uniqueness: true
@@ -72,11 +72,11 @@ class User < ApplicationRecord
     self.movies.where("type = 'Movie'")
   end
 
-  def get_clothing_items
-    self.clothing_items.where("type = 'ClothingItem'")
+  def get_clothings
+    self.clothing_items.where("type = 'Clothing'")
   end
 
-  def get_household_items
-    self.household_items.where("type = 'HouseholdItem'")
+  def get_households
+    self.household_items.where("type = 'Household'")
   end
 end

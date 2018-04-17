@@ -21,8 +21,8 @@ class Item < ApplicationRecord
   scope :books, -> { where(type: 'Book')}
   scope :games, -> { where(type: 'Game')}
   scope :movies, -> { where(type: 'Movie')}
-  scope :household_items, -> { where(type: 'HouseholdItem')}
-  scope :clothing_items, -> { where(type: 'ClothingItem')}
+  scope :households, -> { where(type: 'Household')}
+  scope :clothings, -> { where(type: 'Clothing')}
 
   validates :title, presence: true
   def is_available?

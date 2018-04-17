@@ -1,30 +1,29 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :get_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @books = Book.all
     @games = Game.all
     @movies = Movie.all
-    @household_items = HouseholdItem.all
-    @clothing_items = ClothingItem.all
+    @household_items = Household.all
+    @clothing_items = Clothing.all
   end
 
   def show
   end
 
   def new
-    byebug
+    @type = params[:type]
     @user = User.find(params[:user_id])
-    @item = @user.send(set_type.pluralize).new
+    @item = @user.send(@type.downcase.pluralize).new
   end
 
   def create
-    byebug
-    @user = User.find(params[:user_id])
-    @item = @user.send(set_type.pluralize).create(item_params)
+    @type = params[:item][:type].downcase
+    @user = current_user
 
+    @item = @user.send(@type.pluralize).create(item_params)
     if @item.valid?
       redirect_to @item
     else
@@ -58,27 +57,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def set_item
-    @user = User.find(params[:user_id])
-    @item = @user.send(set_type.pluralize).find(params[:id])
-  end
-
-  def set_type
-    case params[:type]
-    when 'Book'
-      'book'
-    when 'Game'
-      'game'
-    when 'Movie'
-      'movie'
-    when 'HouseholdItem'
-      'household_item'
-    when 'ClothingItem'
-      'clothing_item'
-    end
-  end
-
   def item_params
-    params.require(set_type.to_sym).permit(:title, :image, :genre, :author, :description, :user_id)
+    params.require(:item).permit(:title, :image, :genre, :author, :description, :user_id, :type)
   end
 end

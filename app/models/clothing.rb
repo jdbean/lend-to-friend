@@ -17,7 +17,7 @@
 #  index_items_on_user_id        (user_id)
 #
 
-class HouseholdItem < Item
+class Clothing < Item
   belongs_to :user
   has_many :loans
   has_many :borrowers, through: :loans, source: :user
