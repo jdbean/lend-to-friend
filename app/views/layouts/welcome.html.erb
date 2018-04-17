@@ -16,6 +16,14 @@
       <main role="main" class="inner cover">
         <h1 class="cover-heading display-2">Lend-to-Friend</h1>
         <p class="lead">Lend. Borrow. Share. Love.</p>
+        <div class= "container">
+          <% if notice  %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert  %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
         <%= yield %>
       </main>
     </div>
