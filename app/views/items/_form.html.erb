@@ -1,18 +1,18 @@
 <%= form_with model: @item do |f| %>
-  <%= f.label :title %>
+  <%= f.label :title %><br>
   <%= f.text_field :title %>
-
-  <%= f.label :author %>
+  <br></br>
+  <%= f.label :author %><br>
   <%= f.text_field :author %>
-
-  <%= f.label :genre %>
+  <br></br>
+  <%= f.label :genre %><br>
   <%= f.text_field :genre %>
-
-  <%= f.label :description %>
+  <br></br>
+  <%= f.label :description %><br>
   <%= f.text_field :description %>
-
-  <%= f.label :image %>
+  <br></br>
+  <%= f.label :image %><br>
   <%= f.text_field :image %>
-
+  <br></br>
   <%= f.submit %>
 <% end %>
