@@ -12,11 +12,7 @@
   </head>
 
   <body>
-<<<<<<< HEAD
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-=======
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Lend-a-Friend</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,11 +37,20 @@
           <a class="dropdown-item" href="#">Add Shared Items</a>
           <a class="dropdown-item" href="#">All Loans</a>
           <a class="dropdown-item" href="#">Manage Account Settings</a>
+          <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item"   %>
+
         </div>
       </li>
         </ul>
       </div>
     </nav>
+
+    <div class= "container">
+      <p class="notice"><%= notice %></p>
+      <% if alert  %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+    </div>
 
     <div class="container">
       <%= yield %>
@@ -55,6 +60,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
->>>>>>> dev
   </body>
 </html>
