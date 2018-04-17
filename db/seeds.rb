@@ -19,7 +19,10 @@ Loan.destroy_all
     state: Faker::Address.state_abbr,
     zipcode: Faker::Address.zip,
     street_address: Faker::Address.street_address,
-    avatar: Faker::Avatar.image)
+    avatar: Faker::Avatar.image,
+    password: "password"
+  )
+
 end
 
 # NOTE: replace name with title
