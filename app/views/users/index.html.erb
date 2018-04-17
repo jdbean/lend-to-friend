@@ -1,8 +1,8 @@
-All Users
+<h1>All Users</h1>
 <%= column_chart User.item_count, ytitle: "Number of Items Shared", xtitle: "User Name" %>
 
 
 <% @users.each do |user| %>
-  <img src="<%= user.avatar %>"><br>
-  <%= user.name %>
+  <img src=<%= user.avatar %>><br>
+  <%= link_to user.name, user %><br>
 <% end %>

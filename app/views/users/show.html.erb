@@ -1,15 +1,25 @@
-<%= @user.name %>
-<img src="<%= @user.avatar %>">
-Email: <%= @user.email %>
-Phone Number: <%= @user.phone %>
-Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= @user.zipcode %>
+<img src=<%= @user.avatar %>><br/>
+<h3><%= link_to @user.name, users_path %></h3>
+Email: <%= @user.email %><br>
+Phone Number: <%= @user.phone %><br/>
+Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= @user.zipcode %><br/>
+<br/>
 
 Shared Items:
-<%= @user.items.each do |book| %>
-  <%= link_to book.title, book %>
-<% end %>
+<ul>
+  <% @user.items.each do |book| %>
+    <li><%= link_to book.title, book %></li>
+  <% end %>
+</ul>
 
 Lent Items:
-<%= @user.borrowed_items.each do |book| %>
-  <%= link_to book.title, book %>
+<ul>
+  <% @user.borrowed_items.each do |book| %>
+    <li><%= link_to book.title, book %></li>
+  <% end %>
+</ul>
+
+<%# NOTE: Make sure this creates with current user_id %>
+<%= form_tag new_item_path, method: :get do %>
+  <%= submit_tag "Add an Item" %>
 <% end %>

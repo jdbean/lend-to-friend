@@ -1,27 +1,27 @@
 <%= form_with model: @user do |f| %>
-  <%= f.label :name %>
+  <%= f.label :name %><br>
   <%= f.text_field :name %>
-
-  <%= f.label :email %>
+  <br><br/>
+  <%= f.label :email %><br>
   <%= f.text_field :email %>
-
-  <%= f.label :phone %>
+  <br><br/>
+  <%= f.label :phone %><br>
   <%= f.text_field :phone %>
-
-  <%= f.label :street_address %>
+  <br><br/>
+  <%= f.label :street_address %><br>
   <%= f.text_field :street_address %>
-
-  <%= f.label :city %>
+  <br><br/>
+  <%= f.label :city %><br>
   <%= f.text_field :city %>
-
-  <%= f.label :state %>
+  <br><br/>
+  <%= f.label :state %><br>
   <%= f.text_field :state %>
-
-  <%= f.label :zipcode %>
+  <br><br/>
+  <%= f.label :zipcode %><br>
   <%= f.text_field :zipcode %>
-
-  <%= f.label :avatar_url %>
+  <br><br/>
+  <%= f.label :avatar_url %><br>
   <%= f.text_field :avatar %>
-
+  <br><br/>
   <%= f.submit %>
 <% end %>
