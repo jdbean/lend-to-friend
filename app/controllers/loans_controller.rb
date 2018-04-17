@@ -30,7 +30,7 @@ class LoansController < ApplicationController
   end
 
   def update
-    @loan = Loan.update(loan_params)
+    @loan.update(loan_params)
 
     if @loan.valid?
       redirect_to @loan

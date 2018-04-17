@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.update(item_params)
+    @item.update(item_params)
 
     if @item.valid?
       redirect_to @item

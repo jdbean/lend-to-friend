@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.update(user_params)
+    @user.update(user_params)
 
     if @user.valid?
       redirect_to @user

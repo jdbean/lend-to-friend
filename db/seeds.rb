@@ -29,7 +29,7 @@ end
 25.times do
   Item.create(
     title: Faker::Book.title,
-    image: Faker::LoremPixel.image,
+    image: Faker::Fillmurray.image,
     user_id: Faker::Number.between(1, 10),
     author: Faker::Book.author,
     genre: Faker::Book.genre,
