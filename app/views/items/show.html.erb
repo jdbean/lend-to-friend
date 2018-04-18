@@ -4,34 +4,35 @@
   <% end %>
 <% end %>
 
-<h3><%= link_to @item.title, items_path %></h3>
+<h3><%= link_to @item.title, @item %></h3>
 <img src="<%= @item.image %>"><br/>
 Owner Name: <%= link_to @user.name, @user %><br/>
+<% if @item.author && @item.author != "" %>
 Author: <%= @item.author %><br/>
+<% end %>
+
+<% if @item.genre && @item.genre != "" %>
 Genre: <%= @item.genre %><br/>
+<% end %>
+
+<% if @item.description && @item.description != "" %>
 Description: <%= @item.description %>
+<% end %>
+<br/>
 <br/>
 
-<br/>
+<p>This item has been loaned a total of <b><%= @item.get_loans.count %></b> times.</p>
+
 <% if @item.is_available? %>
   <%= form_tag borrow_path, method: :post do %>
-  <%= hidden_field_tag 'loan[item_id]', @item.id %>
-    <%= submit_tag "Borrow Item" %>
+    <%= hidden_field_tag 'loan[item_id]', @item.id %>
+    <%= submit_tag "Borrow Item", :class => "btn btn-sm btn-outline-secondary" %>
   <% end %>
 <% else %>
   <p>Sorry, this item is currently unavailable to borrow.</p>
 <% end %>
-
-<p> ------------------ </p>
+<hr>
 
 <% if current_user.id == @item.user_id%>
-  <h3>Private</h3>
-  <p>Hi <%= @user.name %></p>
-  <p>Private User Stuff and Ability to edit</p>
-  <br/>
-
-  <%= form_tag edit_item_path, method: :get do %>
-    <%= submit_tag "Edit Item" %>
-  <% end %>
-
+  <%= link_to 'Edit Item', edit_item_path, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
 <% end %>

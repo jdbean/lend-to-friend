@@ -21,6 +21,7 @@ class Book < Item
   belongs_to :user
   has_many :loans
   has_many :borrowers, through: :loans, source: :user
+  validates :title, presence: true
 
   def self.model_name
     Item.model_name
