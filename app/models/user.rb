@@ -56,7 +56,7 @@ class User < ApplicationRecord
                       allow_blank: true
 
 
-  paginates_per 5
+  paginates_per 9
 
   def self.item_count
     hash = {}
