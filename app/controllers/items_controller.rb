@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_item, only: [:show, :edit, :update, :destroy]
+  before_action :get_item, only: [:show, :edit, :update]
 
   def index
     @books = Book.all
@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @user = User.find(@item.user_id)
   end
 
   def new
@@ -47,9 +48,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
-    redirect_to @user
+    Item.destroy(params[:id])
+    redirect_to items_path
   end
+
 
   private
 
