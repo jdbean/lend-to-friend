@@ -27,7 +27,7 @@
             <a class="nav-link" href="/users">All Users</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="/users/<%=current_user.id%>">Profile</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="#">Switch account</a>
@@ -35,9 +35,9 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Add Shared Items</a>
-              <a class="dropdown-item" href="#">All Loans</a>
-              <a class="dropdown-item" href="#">Manage Account Settings</a>
+              <!-- <a class="dropdown-item" href="#">Add Shared Items</a> -->
+              <a class="dropdown-item" href="/users/<%=current_user.id%>/loans">My Loans</a>
+              <a class="dropdown-item" href="/users/<%=current_user.id%>/edit">Account Settings</a>
               <%=link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item"%>
             </div>
           </li>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'auth', controllers: { registrations: 'users/registrations' }
+  devise_for :users, path: 'auth', controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   # devise_for :users, path: 'auth'
 
   root to: 'welcome#index'
