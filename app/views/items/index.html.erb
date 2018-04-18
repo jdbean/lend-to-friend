@@ -2,8 +2,8 @@
 <% @books.each_slice(5) do |books| %>
     <div class="row">
       <% books.each do |book| %>
-        <div class="col-md-2 col-md-offset-1" >
-          <div class="card mb-2 box-shadow h-100">
+        <div class="col-md-3 col-md-offset-1" >
+          <div class="card mb-3 box-shadow h-100">
             <img class="card-img-top" src=<%= book.image %>>
             <div class="card-body">
               <p class="card-text"><%= book.title %></p>
@@ -21,11 +21,10 @@
 <% end %>
 <hr/>
 <h1>Games</h1>
-<% @games.each_slice(5) do |games| %>
     <div class="row">
-      <% games.each do |game| %>
-        <div class="col-md-2 col-md-offset-1" >
-          <div class="card mb-2 box-shadow h-100">
+      <% @games.each do |game| %>
+        <div class="col-md-3 col-md-offset-1" >
+          <div class="card mb-3 box-shadow h-100">
             <img class="card-img-top" src=<%= game.image %>>
             <div class="card-body">
               <p class="card-text"><%= game.title %></p>
@@ -40,14 +39,13 @@
         </div>
       <% end %>
     </div>
-<% end %>
+
 <hr/>
 <h1>Movies</h1>
-<% @movies.each_slice(5) do |movies| %>
     <div class="row">
-      <% movies.each do |movie| %>
-        <div class="col-md-2 col-md-offset-1" >
-          <div class="card mb-2 box-shadow h-100">
+      <% @movies.each do |movie| %>
+        <div class="col-md-3 col-md-offset-1" >
+          <div class="card mb-3 box-shadow h-100">
             <img class="card-img-top" src=<%= movie.image %>>
             <div class="card-body">
               <p class="card-text"><%= movie.title %></p>
@@ -62,14 +60,13 @@
         </div>
       <% end %>
     </div>
-<% end %>
 <hr/>
 <h1>Household Items</h1>
-<% @household_items.each_slice(5) do |items| %>
+
     <div class="row">
-      <% items.each do |item| %>
-        <div class="col-md-2 col-md-offset-1" >
-          <div class="card mb-2 box-shadow h-100">
+      <% @household_items.each do |item| %>
+        <div class="col-md-3 col-md-offset-1" >
+          <div class="card mb-3 box-shadow h-100">
             <img class="card-img-top" src=<%= item.image %>>
             <div class="card-body">
               <p class="card-text"><%= item.title %></p>
@@ -84,14 +81,13 @@
         </div>
       <% end %>
     </div>
-<% end %>
+
 <hr/>
 <h1>Clothing Items</h1>
-<% @clothing_items.each_slice(5) do |items| %>
     <div class="row">
-      <% items.each do |item| %>
-        <div class="col-md-2 col-md-offset-1" >
-          <div class="card mb-2 box-shadow h-100">
+      <% @clothing_items.each do |item| %>
+        <div class="col-md-3 col-md-offset-1" >
+          <div class="card mb-3 box-shadow h-100">
             <img class="card-img-top" src=<%= item.image %>>
             <div class="card-body">
               <p class="card-text"><%= item.title %></p>
@@ -106,4 +102,3 @@
         </div>
       <% end %>
     </div>
-<% end %>
