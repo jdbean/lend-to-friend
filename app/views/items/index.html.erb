@@ -1,34 +1,109 @@
-<h1>All Books</h1>
-<% @books.each do |book| %>
-  <img src=<%= book.image %>><br>
-  <p><%= link_to book.title, book %></p>
+<h1>Books</h1>
+<% @books.each_slice(5) do |books| %>
+    <div class="row">
+      <% books.each do |book| %>
+        <div class="col-md-2 col-md-offset-1" >
+          <div class="card mb-2 box-shadow h-100">
+            <img class="card-img-top" src=<%= book.image %>>
+            <div class="card-body">
+              <p class="card-text"><%= book.title %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= button_to "view", book, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 <% end %>
-<hr>
-
-<h1>All Games</h1>
-<% @games.each do |game| %>
-  <img src=<%= game.image %>><br>
-  <p><%= link_to game.title, game %></p>
+<hr/>
+<h1>Games</h1>
+<% @games.each_slice(5) do |games| %>
+    <div class="row">
+      <% games.each do |game| %>
+        <div class="col-md-2 col-md-offset-1" >
+          <div class="card mb-2 box-shadow h-100">
+            <img class="card-img-top" src=<%= game.image %>>
+            <div class="card-body">
+              <p class="card-text"><%= game.title %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= button_to "view", game, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 <% end %>
-<hr>
-
-<h1>All Movies</h1>
-<% @movies.each do |movie| %>
-  <img src=<%= movie.image %>><br>
-  <p><%= link_to movie.title, movie %></p>
+<hr/>
+<h1>Movies</h1>
+<% @movies.each_slice(5) do |movies| %>
+    <div class="row">
+      <% movies.each do |movie| %>
+        <div class="col-md-2 col-md-offset-1" >
+          <div class="card mb-2 box-shadow h-100">
+            <img class="card-img-top" src=<%= movie.image %>>
+            <div class="card-body">
+              <p class="card-text"><%= movie.title %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= button_to "view", movie, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 <% end %>
-<hr>
-
-<h1>All Household Items</h1>
-<% @household_items.each do |h| %>
-  <img src=<%= h.image %>><br>
-  <p><%= link_to h.title, h %></p>
+<hr/>
+<h1>Household Items</h1>
+<% @household_items.each_slice(5) do |items| %>
+    <div class="row">
+      <% items.each do |item| %>
+        <div class="col-md-2 col-md-offset-1" >
+          <div class="card mb-2 box-shadow h-100">
+            <img class="card-img-top" src=<%= item.image %>>
+            <div class="card-body">
+              <p class="card-text"><%= item.title %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= button_to "view", item, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 <% end %>
-<hr>
-
-<h1>All Clothing Items</h1>
-<% @clothing_items.each do |c| %>
-  <img src=<%= c.image %>><br>
-  <p><%= link_to c.title, c %></p>
+<hr/>
+<h1>Clothing Items</h1>
+<% @clothing_items.each_slice(5) do |items| %>
+    <div class="row">
+      <% items.each do |item| %>
+        <div class="col-md-2 col-md-offset-1" >
+          <div class="card mb-2 box-shadow h-100">
+            <img class="card-img-top" src=<%= item.image %>>
+            <div class="card-body">
+              <p class="card-text"><%= item.title %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= button_to "view", item, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 <% end %>
-<hr>

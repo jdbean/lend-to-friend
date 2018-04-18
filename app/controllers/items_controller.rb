@@ -3,11 +3,11 @@ class ItemsController < ApplicationController
   before_action :get_item, only: [:show, :edit, :update]
 
   def index
-    @books = Book.all
-    @games = Game.all
-    @movies = Movie.all
-    @household_items = Household.all
-    @clothing_items = Clothing.all
+    @books = Book.all.first(5)
+    @games = Game.all.first(5)
+    @movies = Movie.all.first(5)
+    @household_items = Household.all.first(5)
+    @clothing_items = Clothing.all.first(5)
   end
 
   def show
