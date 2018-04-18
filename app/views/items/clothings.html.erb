@@ -1,0 +1,24 @@
+<h1>All Clothing Items</h1>
+
+<% @clothings.each_slice(3) do |clothings| %>
+    <div class="row">
+      <% clothings.each do |clothing| %>
+        <div class="col-md-4" >
+          <div class="card mb-4 box-shadow h-100"">
+            <img class="card-img-top" src=<%= clothing.image %>>
+            <div class="card-body">
+              <p class="card-text"><%= clothing.title %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= button_to "view", clothing, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+<% end %>
+
+<%= paginate @clothings, theme: 'twitter-bootstrap-4' %>

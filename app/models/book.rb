@@ -23,6 +23,8 @@ class Book < Item
   has_many :borrowers, through: :loans, source: :user
   validates :title, presence: true
 
+  paginates_per 9
+
   def self.model_name
     Item.model_name
   end
