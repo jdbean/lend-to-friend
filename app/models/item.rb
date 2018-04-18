@@ -23,8 +23,8 @@ class Item < ApplicationRecord
   scope :movies, -> { where(type: 'Movie')}
   scope :households, -> { where(type: 'Household')}
   scope :clothings, -> { where(type: 'Clothing')}
-
   validates :title, presence: true
+  
   def is_available?
     # Check to see if item's loan array is empty.
       # If empty, item is available for loan

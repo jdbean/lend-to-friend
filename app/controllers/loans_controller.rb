@@ -5,6 +5,8 @@ class LoansController < ApplicationController
 
   def index
     @loans = @user.loans
+    @current_loans = @loans.select { |loan| !loan.item.is_available? && loan.returned == nil }
+    @previous_loans = @loans.select { |loan| loan.item.is_available? || loan.returned != nil }
   end
 
   def create
