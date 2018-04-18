@@ -3,7 +3,7 @@
 <hr>
 <h2>Outstanding Loans</h2>
 <% @loans.each do |loan| %>
-  <% if !loan.item.is_available? %>
+  <% if !loan.item.is_available? && loan.returned == nil %>
     <img src="<%= loan.item.image %>"><br>
     <%= link_to loan.item.title, loan.item %><br>
     Date Borrowed: <%= loan.loaned %><br></br>
@@ -19,8 +19,10 @@
 <hr>
 <h2>Previous Loans</h2>
 <% @loans.each do |loan| %>
-  <% if loan.item.is_available? %>
+  <% if loan.item.is_available? || loan.returned != nil %>
     <img src="<%= loan.item.image %>"><br>
     <%= link_to loan.item.title, loan.item %><br>
+    Date Borrowed: <%= loan.loaned %><br>
+    Date Returned: <%= loan.returned %><br></br>
   <% end %>
 <% end %>
