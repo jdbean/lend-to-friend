@@ -1,24 +1,33 @@
 <img src=<%= @user.avatar %>><br/>
 <h3><%= link_to @user.name, users_path %></h3>
 Email: <%= @user.email %><br>
+<% if @user.phone %>
 Phone Number: <%= @user.phone %><br/>
+<% end %>
+
+<% if @user.street_address && @user.city && @user.state && @user.zipcode %>
 Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= @user.zipcode %><br/>
+<% end %>
 <br/>
 
-Shared Items:
+<h3>Shared Items:</h3>
+<% if !@user.items.empty? %>
 <ul>
   <% @user.items.each do |item| %>
     <li><%= link_to item.title, item %></li>
   <% end %>
 </ul>
-
-Lent Items:
+<% else %>
+  <p>You are currently not sharing any items.</p>
+<% end %>
+<hr>
+<!-- Lent Items:
 <ul>
   <% @user.borrowed_items.each do |item| %>
     <li><%= link_to item.title, item %></li>
   <% end %>
 </ul>
-<hr>
+<hr> -->
 
 <% if current_user.id == @user.id %>
   <h3>Private Profile</h3>

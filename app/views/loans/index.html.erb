@@ -1,6 +1,8 @@
 <h1>My Loans</h1>
 
 <hr>
+<% if @loans %>
+
 <h2>Outstanding Loans</h2>
 <% @loans.each do |loan| %>
   <% if !loan.item.is_available? && loan.returned == nil %>
@@ -12,7 +14,6 @@
     <%= hidden_field_tag 'id', loan.id %>
       <%= submit_tag "Return Item" %>
     <% end %>
-
   <% end %>
 <% end %>
 
@@ -25,4 +26,8 @@
     Date Borrowed: <%= loan.loaned %><br>
     Date Returned: <%= loan.returned %><br></br>
   <% end %>
+<% end %>
+
+<% else %>
+  <p>You have no loans! Click <%= link_to "here", items_path %> to get started!</p> 
 <% end %>
