@@ -11,20 +11,20 @@ class UsersController < ApplicationController
     # Add items to lend here?
   end
 
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.create(user_params)
-
-    if @user.valid?
-      redirect_to @user
-    else
-      flash[:errors] = @user.errors.full_messages
-      redirect_to new_user_path
-    end
-  end
+  # def new
+  #   @user = User.new
+  # end
+  #
+  # def create
+  #   @user = User.create(user_params)
+  #
+  #   if @user.valid?
+  #     redirect_to @user
+  #   else
+  #     flash[:errors] = @user.errors.full_messages
+  #     redirect_to new_user_path
+  #   end
+  # end
 
   def edit
   end
@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
 
     if @user.valid?
+      flash[:success] = "Successfully updated!"
       redirect_to @user
     else
       flash[:errors] = @user.errors.full_messages
@@ -40,10 +41,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user.destroy
-    redirect_to root_path
-  end
+  # def destroy
+  #   @user.destroy
+  #   redirect_to root_path
+  # end
 
   private
 

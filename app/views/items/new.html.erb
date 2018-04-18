@@ -1,11 +1,4 @@
-<% if flash[:errors] %>
-  <%= pluralize(flash[:errors].count, "error") %> prevented this item from being created:
-  <ul>
-    <% flash[:errors].each do |e| %>
-      <li><%= e %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render "errors" %>
 
 <h1>New <%= @type %> Item</h1>
 <%= render "form" %>
