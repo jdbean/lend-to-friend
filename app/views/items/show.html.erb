@@ -1,3 +1,9 @@
+<% if flash[:errors] %>
+  <% flash[:errors].each do |e| %>
+    <%= e %><br>
+  <% end %>
+<% end %>
+
 <h3><%= link_to @item.title, items_path %></h3>
 <img src="<%= @item.image %>"><br/>
 Owner Name: <%= link_to @user.name, @user %><br/>
@@ -7,14 +13,14 @@ Description: <%= @item.description %>
 <br/>
 
 <br/>
-<% if current_user.id != @item.user_id %>
+<% if @item.is_available? %>
   <%= form_tag borrow_path, method: :post do %>
   <%= hidden_field_tag 'loan[item_id]', @item.id %>
     <%= submit_tag "Borrow Item" %>
   <% end %>
+<% else %>
+  <p>Sorry, this item is currently unavailable to borrow.</p>
 <% end %>
-
-
 
 <p> ------------------ </p>
 
