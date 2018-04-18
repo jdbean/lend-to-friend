@@ -1,8 +1,4 @@
-<% if flash[:errors] %>
-  <% flash[:errors].each do |e| %>
-    <%= e %><br>
-  <% end %>
-<% end %>
+<%= render "errors" %>
 
 <h3><%= link_to @item.title, @item %></h3>
 <img src="<%= @item.image %>"><br/>

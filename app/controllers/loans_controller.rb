@@ -16,6 +16,7 @@ class LoansController < ApplicationController
     @loan.loaned = Time.now
 
     if @loan.save
+      flash[:success] = "You have successfully borrowed this item!"
       redirect_to user_loans_path(@user)
     else
       flash[:errors] = @loan.errors.full_messages
@@ -26,6 +27,7 @@ class LoansController < ApplicationController
   def update
     @loan.returned = Time.now
     @loan.save
+    flash[:success] = "You have successfully returned this item!"
     redirect_to user_loans_path(@user)
   end
 

@@ -3,11 +3,11 @@ class ItemsController < ApplicationController
   before_action :get_item, only: [:show, :edit, :update]
 
   def index
-    @books = Book.all.first(5)
-    @games = Game.all.first(5)
-    @movies = Movie.all.first(5)
-    @household_items = Household.all.first(5)
-    @clothing_items = Clothing.all.first(5)
+    @books = Book.all.first(4)
+    @games = Game.all.first(4)
+    @movies = Movie.all.first(4)
+    @household_items = Household.all.first(4)
+    @clothing_items = Clothing.all.first(4)
   end
 
   def books
@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
     @type = params[:type]
     @user = User.find(params[:user_id])
     @item = @user.send(@type.downcase.pluralize).new
-    @item[iamge: "http://via.placeholder.com/300x300"]
+    @item[:image] = "http://via.placeholder.com/300x300"
   end
 
   def create
@@ -52,6 +52,7 @@ class ItemsController < ApplicationController
 
     @item = @user.send(@type.pluralize).create(item_params)
     if @item.valid?
+      flash[:success] = "Item added!"
       redirect_to @item
     else
       flash[:errors] = @item.errors.full_messages
@@ -66,18 +67,13 @@ class ItemsController < ApplicationController
     @item.update(item_params)
 
     if @item.valid?
+      flash[:success] = "Item edited!"
       redirect_to @item
     else
       flash[:errors] = @item.errors.full_messages
       redirect_to edit_item_path
     end
   end
-
-  def destroy
-    Item.destroy(params[:id])
-    redirect_to items_path
-  end
-
 
   private
 
