@@ -42,7 +42,7 @@ class User < ApplicationRecord
   has_many :households, class_name: 'Item'
   has_many :clothings, class_name: 'Item'
 
-  # validates :name, presence: true
+  validates :name, presence: true
   # validates :email, presence: true, uniqueness: true
   ## FIXME: These validations needs to be tested.
   validates_format_of :zipcode,
