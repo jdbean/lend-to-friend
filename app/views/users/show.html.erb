@@ -1,11 +1,11 @@
 <img src=<%= @user.avatar %>><br/>
 <h3><%= link_to @user.name, users_path %></h3>
 Email: <%= @user.email %><br>
-<% if @user.phone %>
+<% if @user.phone && @user.phone != "" %>
 Phone Number: <%= @user.phone %><br/>
 <% end %>
 
-<% if @user.street_address && @user.city && @user.state && @user.zipcode %>
+<% if @user.street_address && @user.street_address != "" && @user.city && @user.city != "" && @user.state && @user.state != "" && @user.zipcode && @user.zipcode != "" %>
 Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= @user.zipcode %><br/>
 <% end %>
 <br/>
@@ -22,7 +22,7 @@ Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= 
   <% end %>
 </ul>
 <% else %>
-  <p>You are currently not sharing any items.</p>
+  <p>Currently not sharing any items.</p>
 <% end %>
 <!-- Lent Items:
 <ul>
