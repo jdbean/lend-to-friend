@@ -1,28 +1,36 @@
 <h1>My Loans</h1>
 
 <hr>
-<h2>Outstanding Loans</h2>
-<% @loans.each do |loan| %>
-  <% if !loan.item.is_available? && loan.returned == nil %>
-    <img src="<%= loan.item.image %>"><br>
-    <%= link_to loan.item.title, loan.item %><br>
-    Date Borrowed: <%= loan.loaned %><br></br>
+<% if !@loans.empty? %>
 
-    <%= form_tag return_path, method: :post do %>
-    <%= hidden_field_tag 'id', loan.id %>
-      <%= submit_tag "Return Item" %>
+  <% if !@current_loans.empty? %>
+    <h2>Outstanding Loans</h2>
+    <% @current_loans.each do |loan| %>
+      <img src="<%= loan.item.image %>"><br>
+      <%= link_to loan.item.title, loan.item %><br>
+      Date Borrowed: <%= loan.loaned %><br></br>
+      <%= form_tag return_path, method: :post do %>
+        <%= hidden_field_tag 'id', loan.id %>
+        <%= submit_tag "Return Item" %>
+      <% end %>
     <% end %>
-
+  <% else %>
+    <p>Congratulations! You have no outstanding loans. Click <%= link_to "here", items_path %> to loan an item!</p>
   <% end %>
-<% end %>
 
-<hr>
-<h2>Previous Loans</h2>
-<% @loans.each do |loan| %>
-  <% if loan.item.is_available? || loan.returned != nil %>
-    <img src="<%= loan.item.image %>"><br>
-    <%= link_to loan.item.title, loan.item %><br>
-    Date Borrowed: <%= loan.loaned %><br>
-    Date Returned: <%= loan.returned %><br></br>
+  <hr>
+  <% if !@previous_loans.empty? %>
+    <h2>Previous Loans</h2>
+    <% @previous_loans.each do |loan| %>
+      <img src="<%= loan.item.image %>"><br>
+      <%= link_to loan.item.title, loan.item %><br>
+      Date Borrowed: <%= loan.loaned %><br>
+      Date Returned: <%= loan.returned %><br></br>
+    <% end %>
+  <% else %>
+    <p>You have no loans that have not been returned.</p>
   <% end %>
+
+<% else %>
+  <p>You have no loans. Click <%= link_to "here", items_path %> to get started!</p>
 <% end %>

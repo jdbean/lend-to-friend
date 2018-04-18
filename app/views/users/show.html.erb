@@ -1,36 +1,41 @@
 <img src=<%= @user.avatar %>><br/>
 <h3><%= link_to @user.name, users_path %></h3>
 Email: <%= @user.email %><br>
+<% if @user.phone %>
 Phone Number: <%= @user.phone %><br/>
-Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= @user.zipcode %><br/>
-<br/>
+<% end %>
 
-Shared Items:
+<% if @user.street_address && @user.city && @user.state && @user.zipcode %>
+Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= @user.zipcode %><br/>
+<% end %>
+<br/>
+<% if current_user.id == @user.id %>
+  <%= link_to "Edit Profile", edit_user_path, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+  <%= link_to "My Loans", user_loans_path(@user), :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+<% end %>
+<hr>
+<h3>Shared Items</h3>
+<% if !@user.items.empty? %>
 <ul>
   <% @user.items.each do |item| %>
     <li><%= link_to item.title, item %></li>
   <% end %>
 </ul>
-
-Lent Items:
+<% else %>
+  <p>You are currently not sharing any items.</p>
+<% end %>
+<!-- Lent Items:
 <ul>
   <% @user.borrowed_items.each do |item| %>
     <li><%= link_to item.title, item %></li>
   <% end %>
 </ul>
-<hr>
+<hr> -->
 
 <% if current_user.id == @user.id %>
-  <h3>Private Profile</h3>
-
-  <%= button_to "My Loans", user_loans_path(@user), :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
-  <br>
-  <%= button_to "Edit Profile", edit_user_path, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
-  <hr>
-  <h3>Add Shared Items</h3>
-  <%= link_to 'Add Book', new_user_book_path(@user) %><br>
-  <%= link_to 'Add Game', new_user_game_path(@user) %><br>
-  <%= link_to 'Add Movie', new_user_movie_path(@user) %><br>
-  <%= link_to 'Add Household Item', new_user_household_path(@user) %><br>
-  <%= link_to 'Add Clothing Item', new_user_clothing_path(@user) %>
+  <%= link_to 'Add Book', new_user_book_path(@user), :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+  <%= link_to 'Add Game', new_user_game_path(@user), :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+  <%= link_to 'Add Movie', new_user_movie_path(@user), :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+  <%= link_to 'Add Household Item', new_user_household_path(@user), :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+  <%= link_to 'Add Clothing Item', new_user_clothing_path(@user), :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
 <% end %>

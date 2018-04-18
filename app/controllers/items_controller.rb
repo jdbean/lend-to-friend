@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
       redirect_to @item
     else
       flash[:errors] = @item.errors.full_messages
-      redirect_to new_item_path
+      redirect_to "/users/#{@user.id}/#{@type.pluralize}/new"
     end
   end
 
