@@ -21,10 +21,10 @@ Lent Items:
 <hr>
 
 <% if current_user.id == @user.id %>
-  <p>HI this is you!</p>
+  <h3>Private</h3>
+  <p>Hi <%= @user.name %></p>
   <p>Private User Stuff and Ability to edit</p>
   <br/>
-
   <%= form_tag edit_user_path, method: :get do %>
     <%= submit_tag "Edit Profile" %>
   <% end %>

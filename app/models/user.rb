@@ -55,6 +55,12 @@ class User < ApplicationRecord
     hash
   end
 
+  # def default_avatar
+  #   if self.avatar == nil
+  #     self.avatar = Faker::Avatar.image
+  #   end
+  # end
+
   def items
     #returns all items regardless of type
     self.books

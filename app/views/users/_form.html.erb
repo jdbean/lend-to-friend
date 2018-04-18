@@ -21,7 +21,8 @@
   <%= f.text_field :zipcode %>
   <br><br/>
   <%= f.label :avatar_url %><br>
-  <%= f.text_field :avatar %>
+  <%# NOTE: , :value => Faker::Avatar.image %>
+  <%= f.text_field :avatar%>
   <br><br/>
   <%= f.submit %>
 <% end %>

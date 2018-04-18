@@ -7,9 +7,11 @@ Description: <%= @item.description %>
 <br/>
 
 <br/>
-<%= form_tag borrow_path, method: :post do %>
-<%= hidden_field_tag 'loan[item_id]', @item.id %>
-  <%= submit_tag "Borrow Item" %>
+<% if current_user.id != @item.user_id %>
+  <%= form_tag borrow_path, method: :post do %>
+  <%= hidden_field_tag 'loan[item_id]', @item.id %>
+    <%= submit_tag "Borrow Item" %>
+  <% end %>
 <% end %>
 
 
@@ -17,7 +19,8 @@ Description: <%= @item.description %>
 <p> ------------------ </p>
 
 <% if current_user.id == @item.user_id%>
-  <p>HI this is you!</p>
+  <h3>Private</h3>
+  <p>Hi <%= @user.name %></p>
   <p>Private User Stuff and Ability to edit</p>
   <br/>
 

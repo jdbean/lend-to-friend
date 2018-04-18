@@ -25,12 +25,26 @@ Loan.destroy_all
 
 end
 
+# NOTE: Known User
+User.create(
+  name: "Lendy Friendy",
+  email: "lf@lf.com",
+  phone: Faker::PhoneNumber.cell_phone,
+  city: Faker::Address.city,
+  state: Faker::Address.state_abbr,
+  zipcode: Faker::Address.zip,
+  street_address: Faker::Address.street_address,
+  avatar: Faker::Avatar.image,
+  password: "password"
+)
+
+
 # NOTE: replace name with title
 10.times do
   Book.create(
     title: Faker::Book.title,
     image: Faker::Fillmurray.image,
-    user_id: Faker::Number.between(1, 10),
+    user_id: Faker::Number.between(1, 11),
     author: Faker::Book.author,
     genre: Faker::Book.genre,
     description: Faker::Lorem.paragraph)
@@ -40,7 +54,7 @@ end
   Movie.create(
     title: Faker::Book.title,
     image: Faker::Fillmurray.image,
-    user_id: Faker::Number.between(1, 10),
+    user_id: Faker::Number.between(1, 11),
     genre: Faker::Book.genre,
     description: Faker::Lorem.paragraph)
 end
@@ -49,7 +63,7 @@ end
   Game.create(
     title: Faker::Book.title,
     image: Faker::Fillmurray.image,
-    user_id: Faker::Number.between(1, 10),
+    user_id: Faker::Number.between(1, 11),
     genre: Faker::Book.genre,
     description: Faker::Lorem.paragraph)
 end
@@ -58,7 +72,7 @@ end
   Household.create(
     title: Faker::Book.title,
     image: Faker::Fillmurray.image,
-    user_id: Faker::Number.between(1, 10),
+    user_id: Faker::Number.between(1, 11),
     description: Faker::Lorem.paragraph)
 end
 
@@ -66,14 +80,14 @@ end
   Clothing.create(
     title: Faker::Book.title,
     image: Faker::Fillmurray.image,
-    user_id: Faker::Number.between(1, 10),
+    user_id: Faker::Number.between(1, 11),
     description: Faker::Lorem.paragraph)
 end
 
 15.times do
   Loan.create(
     item_id: Faker::Number.between(1, 30),
-    borrower_id: Faker::Number.between(1, 10),
+    borrower_id: Faker::Number.between(1, 11),
     loaned: Faker::Date.between(6.days.ago, Date.today),
     returned: Faker::Date.between(2.days.ago, 1.week.from_now))
 end
@@ -81,7 +95,7 @@ end
 5.times do
   Loan.create(
     item_id: Faker::Number.between(1, 30),
-    borrower_id: Faker::Number.between(1, 10),
+    borrower_id: Faker::Number.between(1, 11),
     loaned: Faker::Date.between(6.days.ago, Date.today),
     returned: nil)
 end
