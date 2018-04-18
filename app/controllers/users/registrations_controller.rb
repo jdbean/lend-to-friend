@@ -10,10 +10,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   #
   # POST /resource
-  # def create
-  #   super
-  #   byebug
-  # end
+  def create
+    super
+    # FIXME: NEED to actually find the right user
+    @user = User.find_by(email: params[:user][:email])
+    if @user
+      @user.avatar = Faker::Avatar.image
+      @user.save
+    end
+  end
   #
   # GET /resource/edit
   # def edit
