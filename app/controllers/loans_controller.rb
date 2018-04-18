@@ -1,50 +1,37 @@
 class LoansController < ApplicationController
   before_action :authenticate_user!
-
-  before_action :get_loan, only: [:show, :edit, :update]
+  before_action :get_loan, only: [:update]
+  before_action :get_user, only: [:index, :create, :update]
 
   def index
-    @loans = Loan.all
-    #analytics page?
-  end
-
-  def show
-  end
-
-  def new
-    @loan = Loan.new
+    @loans = @user.loans
   end
 
   def create
-
+    @item = Item.find(loan_params[:item_id])
     @loan = Loan.new(loan_params)
-    # FIXME: make sure we check for Availability
     @loan.borrower = current_user
     @loan.loaned = Time.now
-    @loan.save
-    if @loan.valid?
-      redirect_to @loan
+
+    if @loan.save
+      redirect_to user_loans_path(@user)
     else
       flash[:errors] = @loan.errors.full_messages
-      redirect_to new_loan_path
+      redirect_to @item
     end
-  end
-
-  def edit
   end
 
   def update
-    @loan.update(loan_params)
-
-    if @loan.valid?
-      redirect_to @loan
-    else
-      flash[:errors] = @loan.errors.full_messages
-      redirect_to edit_loan_path
-    end
+    @loan.returned = Time.now
+    @loan.save
+    redirect_to user_loans_path(@user)
   end
 
   private
+
+  def get_user
+    @user = current_user
+  end
 
   def get_loan
     @loan = Loan.find(params[:id])
