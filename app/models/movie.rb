@@ -22,6 +22,7 @@ class Movie < Item
   has_many :loans
   has_many :borrowers, through: :loans, source: :user
   validates :title, presence: true
+  paginates_per 9
 
   def self.model_name
     Item.model_name

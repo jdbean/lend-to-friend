@@ -10,6 +10,31 @@ class ItemsController < ApplicationController
     @clothing_items = Clothing.all.first(5)
   end
 
+  def books
+    @books = Book.order(:title).page params[:page]
+    render :books
+  end
+
+  def movies
+    @movies = Movie.order(:title).page params[:page]
+    render :movies
+  end
+
+  def games
+    @games = Game.order(:title).page params[:page]
+    render :games
+  end
+
+  def households
+    @households = Household.order(:title).page params[:page]
+    render :households
+  end
+
+  def clothings
+    @clothings = Clothing.order(:title).page params[:page]
+    render :clothings
+  end
+
   def show
     @user = User.find(@item.user_id)
   end
