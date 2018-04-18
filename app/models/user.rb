@@ -44,6 +44,17 @@ class User < ApplicationRecord
 
   # validates :name, presence: true
   # validates :email, presence: true, uniqueness: true
+  ## FIXME: These validations needs to be tested.
+  validates_format_of :zipcode,
+                      :with => /\A\d{5}-\d{4}|\A\d{5}\z/,
+                      :message => "Zipcodes must be in format 12345 or 12345-1234",
+                      allow_blank: true
+
+  validates_format_of :phone,
+                      :with => /\(?[0-9]{3}\)?\.[0-9]{3}\.[0-9]{4}/,
+                      :message => "Phone numbers must be in xxx.xxx.xxxx format.",
+                      allow_blank: true
+
 
   paginates_per 5
 
