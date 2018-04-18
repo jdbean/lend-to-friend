@@ -21,6 +21,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.save
     end
   end
+
+  def after_sign_up_path_for(resource)
+    current_user
+  end
   #
   # GET /resource/edit
   # def edit
