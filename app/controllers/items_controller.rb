@@ -3,11 +3,11 @@ class ItemsController < ApplicationController
   before_action :get_item, only: [:show, :edit, :update]
 
   def index
-    @books = Book.all.first(5)
-    @games = Game.all.first(5)
-    @movies = Movie.all.first(5)
-    @household_items = Household.all.first(5)
-    @clothing_items = Clothing.all.first(5)
+    @books = Book.all.first(4)
+    @games = Game.all.first(4)
+    @movies = Movie.all.first(4)
+    @household_items = Household.all.first(4)
+    @clothing_items = Clothing.all.first(4)
   end
 
   def books
@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
     @type = params[:type]
     @user = User.find(params[:user_id])
     @item = @user.send(@type.downcase.pluralize).new
-    @item[image: "http://via.placeholder.com/300x300"]
+    @item[:image] = "http://via.placeholder.com/300x300"
   end
 
   def create
