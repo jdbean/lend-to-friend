@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     @type = params[:type]
     @user = User.find(params[:user_id])
     @item = @user.send(@type.downcase.pluralize).new
+    @item[iamge: "http://via.placeholder.com/300x300"]
   end
 
   def create
