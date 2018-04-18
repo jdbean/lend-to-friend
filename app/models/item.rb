@@ -32,7 +32,7 @@ class Item < ApplicationRecord
       # If item has loans and all of them have been returned, item is available.
     if !self.get_loans.empty?
       self.get_loans.each do |loan|
-        if !!loan.returned
+        if !loan.returned
           return false
         end
       end
@@ -43,7 +43,7 @@ class Item < ApplicationRecord
   def get_loans
     Loan.find_by_sql("SELECT * FROM loans WHERE loans.item_id = #{self.id}")
   end
-  
+
   def self.last_nine
     #returns the last 9 items added to the DB
     self.last(9)

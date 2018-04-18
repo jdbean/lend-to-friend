@@ -1,0 +1,26 @@
+<h1>My Loans</h1>
+
+<hr>
+<h2>Outstanding Loans</h2>
+<% @loans.each do |loan| %>
+  <% if !loan.item.is_available? %>
+    <img src="<%= loan.item.image %>"><br>
+    <%= link_to loan.item.title, loan.item %><br>
+    Date Borrowed: <%= loan.loaned %><br></br>
+
+    <%= form_tag return_path, method: :post do %>
+    <%= hidden_field_tag 'id', loan.id %>
+      <%= submit_tag "Return Item" %>
+    <% end %>
+
+  <% end %>
+<% end %>
+
+<hr>
+<h2>Previous Loans</h2>
+<% @loans.each do |loan| %>
+  <% if loan.item.is_available? %>
+    <img src="<%= loan.item.image %>"><br>
+    <%= link_to loan.item.title, loan.item %><br>
+  <% end %>
+<% end %>
