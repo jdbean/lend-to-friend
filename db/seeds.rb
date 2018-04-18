@@ -14,7 +14,7 @@ Loan.destroy_all
   User.create(
     name: Faker::FunnyName.name,
     email: Faker::Internet.email,
-    phone: Faker::PhoneNumber.cell_phone,
+    phone: Faker::Base.numerify('###.###.####'),
     city: Faker::Address.city,
     state: Faker::Address.state_abbr,
     zipcode: Faker::Address.zip,
@@ -29,7 +29,7 @@ end
 User.create(
   name: "Lendy Friendy",
   email: "lf@lf.com",
-  phone: Faker::PhoneNumber.cell_phone,
+  phone: Faker::Base.numerify('###.###.####'),
   city: Faker::Address.city,
   state: Faker::Address.state_abbr,
   zipcode: Faker::Address.zip,

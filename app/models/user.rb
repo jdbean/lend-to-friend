@@ -66,6 +66,7 @@ class User < ApplicationRecord
     hash
   end
 
+  # FIXME: Probably need to to move to devise
   # def default_avatar
   #   if self.avatar == nil
   #     self.avatar = Faker::Avatar.image
