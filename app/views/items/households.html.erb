@@ -1,0 +1,24 @@
+<h1>All Household Items</h1>
+
+<% @households.each_slice(3) do |households| %>
+    <div class="row">
+      <% households.each do |household| %>
+        <div class="col-md-4" >
+          <div class="card mb-4 box-shadow h-100"">
+            <img class="card-img-top" src=<%= household.image %>>
+            <div class="card-body">
+              <p class="card-text"><%= household.title %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= button_to "view", household, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+<% end %>
+
+<%= paginate @households, theme: 'twitter-bootstrap-4' %>

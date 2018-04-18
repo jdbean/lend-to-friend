@@ -1,0 +1,24 @@
+<h1>All Books</h1>
+
+<% @books.each_slice(3) do |books| %>
+    <div class="row">
+      <% books.each do |book| %>
+        <div class="col-md-4" >
+          <div class="card mb-4 box-shadow h-100"">
+            <img class="card-img-top" src=<%= book.image %>>
+            <div class="card-body">
+              <p class="card-text"><%= book.title %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= button_to "view", book, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+<% end %>
+
+<%= paginate @books, theme: 'twitter-bootstrap-4' %>
