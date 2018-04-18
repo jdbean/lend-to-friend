@@ -19,6 +19,8 @@
       <% end %>
     </div>
 <% end %>
+<br>
+<%= link_to 'See All Books', books_path, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
 <hr/>
 <h1>Games</h1>
 <% @games.each_slice(5) do |games| %>
@@ -41,6 +43,8 @@
       <% end %>
     </div>
 <% end %>
+<br>
+<%= link_to 'See All Games', games_path, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
 <hr/>
 <h1>Movies</h1>
 <% @movies.each_slice(5) do |movies| %>
@@ -63,6 +67,9 @@
       <% end %>
     </div>
 <% end %>
+<br>
+<%= link_to 'See All Movies', movies_path, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
+
 <hr/>
 <h1>Household Items</h1>
 <% @household_items.each_slice(5) do |items| %>
@@ -85,6 +92,8 @@
       <% end %>
     </div>
 <% end %>
+<br>
+<%= link_to 'See All Household Items', households_path, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
 <hr/>
 <h1>Clothing Items</h1>
 <% @clothing_items.each_slice(5) do |items| %>
@@ -107,3 +116,5 @@
       <% end %>
     </div>
 <% end %>
+<br>
+<%= link_to 'See All Clothing Items', clothings_path, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
