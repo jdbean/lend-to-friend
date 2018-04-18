@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_04_16_222426) do
   create_table "loans", force: :cascade do |t|
     t.integer "item_id"
     t.integer "borrower_id"
+    t.integer "rating"
     t.datetime "loaned"
     t.datetime "returned"
     t.index ["borrower_id"], name: "index_loans_on_borrower_id"
