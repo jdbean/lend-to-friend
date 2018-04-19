@@ -15,6 +15,10 @@
 #  index_loans_on_borrower_id  (borrower_id)
 #  index_loans_on_item_id      (item_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (item_id => items.id)
+#
 
 class Loan < ApplicationRecord
   include ActiveModel::Validations

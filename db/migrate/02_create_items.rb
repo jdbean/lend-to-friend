@@ -9,6 +9,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :author
       t.string :genre
     end
-    add_index :items, [:type, :user]
+    # add_index :items, [:type, :user]
   end
 end

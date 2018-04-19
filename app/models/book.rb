@@ -13,8 +13,11 @@
 #
 # Indexes
 #
-#  index_items_on_type_and_user  (type,)
-#  index_items_on_user_id        (user_id)
+#  index_items_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 
 class Book < Item
