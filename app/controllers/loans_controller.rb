@@ -28,8 +28,8 @@ class LoansController < ApplicationController
   end
 
   def update
-    @loan.rating = loan_params[:rating]
     @loan.returned = Time.now
+    @loan.rating = loan_params[:rating]
     if @loan.save
       flash[:success] = "You have successfully returned this item!"
       redirect_to user_loans_path(@user)

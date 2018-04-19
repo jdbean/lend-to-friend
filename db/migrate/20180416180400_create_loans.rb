@@ -6,6 +6,7 @@ class CreateLoans < ActiveRecord::Migration[5.2]
       t.integer :rating
       t.datetime :loaned
       t.datetime :returned
+      t.boolean :overdue, default: false
     end
   end
 end

@@ -8,6 +8,7 @@
 #  rating      :integer
 #  loaned      :datetime
 #  returned    :datetime
+#  overdue     :boolean          default(FALSE)
 #
 # Indexes
 #
@@ -20,9 +21,22 @@ class Loan < ApplicationRecord
   belongs_to :item
   belongs_to :borrower, class_name: "User", foreign_key: "borrower_id"
   validates_with LoanValidator, on: :create
-  validates :rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, on: :update
+  validates :loaned, presence: true
+  validates :rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, on: :update, if: :return_requested?
 
   # def item_is_available?
   #   self.item.is_available?
   # end
+
+  def return_requested?
+    self.returned != nil
+  end
+
+  def due_date
+    (self.loaned + 7.days).strftime("%b %d, %Y")
+  end
+
+  def overdue?
+    self.due_date > Time.now
+  end
 end

@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2018_04_16_222426) do
     t.integer "rating"
     t.datetime "loaned"
     t.datetime "returned"
+    t.boolean "overdue", default: false
     t.index ["borrower_id"], name: "index_loans_on_borrower_id"
     t.index ["item_id"], name: "index_loans_on_item_id"
   end

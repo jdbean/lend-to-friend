@@ -1,0 +1,7 @@
+<div class= "container">
+  <% if current_user.any_overdue_items? %>
+    <p class="alert alert-danger">
+      You have overdue items! Click <%= link_to "here", user_loans_path(current_user) %> to view them.
+    </p>
+  <% end %>
+</div>
