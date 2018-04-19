@@ -66,6 +66,11 @@ class User < ApplicationRecord
     hash
   end
 
+  def self.top_10_loaners
+    self.item_count.max_by(10){|k,v| v}
+  end
+
+
   # FIXME: Probably need to to move to devise
   # def default_avatar
   #   if self.avatar == nil

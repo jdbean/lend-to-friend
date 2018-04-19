@@ -24,7 +24,9 @@ class Item < ApplicationRecord
   scope :households, -> { where(type: 'Household')}
   scope :clothings, -> { where(type: 'Clothing')}
   validates :title, presence: true
-  
+
+  # delegate :type, to: :loan, prefix: true
+
   def is_available?
     # Check to see if item's loan array is empty.
       # If empty, item is available for loan
@@ -44,9 +46,27 @@ class Item < ApplicationRecord
     Loan.find_by_sql("SELECT * FROM loans WHERE loans.item_id = #{self.id}")
   end
 
-  def self.last_nine
-    #returns the last 9 items added to the DB
-    self.last(9)
+
+  def self.loans_by_day
+    collection = self.all.collect do |loan|
+      loan.get_loans
+    end
+    group_by_day(collection.flatten)
   end
+
+  # def self.last_nine
+  #   #returns the last 9 items added to the DB
+  #   self.last(9)
+  # end
+  #
+  def self.by_type
+    self.group(:type)
+  end
+
+  # def self.type_by_loan_date
+  #   self.item_by_type.each do |type|
+  #     type
+  #   end
+  # end
 
 end

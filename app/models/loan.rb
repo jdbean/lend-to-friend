@@ -20,7 +20,65 @@ class Loan < ApplicationRecord
   belongs_to :borrower, class_name: "User", foreign_key: "borrower_id"
   validates_with LoanValidator, on: :create
 
+  attr_accessor :type
+
   # def item_is_available?
   #   self.item.is_available?
+  # end
+
+  def checked_out_on?(datetime)
+    if self.returned
+      ret = self.returned
+    else
+      ret = Time.now
+    end
+    (self.loaned..ret).include?(datetime)
+  end
+
+  # def item_type
+  #   if self.item
+  #     self.item.type
+  #   end
+  # end
+  #
+  # def type
+  #   if self.item
+  #     self.item.type
+  #   end
+  # end
+  #
+  # def self.chart
+  #   self.joins(:item).map {|loan|
+  #     {type: loan.item_type, data: loan.loaned}
+  #   }
+  # end
+
+
+
+  # def self.item_type_by_day
+  #   array = []
+  #   hash = {}
+  #   self.all.each do |loan|
+  #     if !array.include?(loan.item_type)
+  #       hash[:name] = loan.item_type
+  #       []
+  #     end
+  #     hash[loan.item_type] << loan.loaned
+  #   end
+  #   hash
+  # end
+
+  # def self.by_type
+  #   self.group(type)
+  # end
+  #
+  # def self.with_type
+  #   Loan.all.map do |l|
+  #     {type: l.type, data: l}
+  #   end
+  # end
+  #
+  # def self.group_by_type
+  #   self.with_type.group_by{|h| h[:type]}.values
   # end
 end
