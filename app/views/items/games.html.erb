@@ -3,6 +3,7 @@
 <h1>All Games</h1>
 
 <% @games.each_slice(3) do |games| %>
+    <div class="row top-buffer"></div>
     <div class="row">
       <% games.each do |game| %>
         <div class="col-md-4" >
@@ -33,5 +34,5 @@
       <% end %>
     </div>
 <% end %>
-
+<div class="row top-buffer"></div>
 <%= paginate @games, theme: 'twitter-bootstrap-4' %>

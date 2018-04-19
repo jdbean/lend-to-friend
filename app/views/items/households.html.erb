@@ -3,6 +3,7 @@
 <h1>All Household Items</h1>
 
 <% @households.each_slice(3) do |households| %>
+    <div class="row top-buffer"></div>
     <div class="row">
       <% households.each do |household| %>
         <div class="col-md-4" >
@@ -33,5 +34,5 @@
       <% end %>
     </div>
 <% end %>
-
+<div class="row top-buffer"></div>
 <%= paginate @households, theme: 'twitter-bootstrap-4' %>

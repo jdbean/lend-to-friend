@@ -3,6 +3,7 @@
 <h1>All Clothing Items</h1>
 
 <% @clothings.each_slice(3) do |clothings| %>
+    <div class="row top-buffer"></div>
     <div class="row">
       <% clothings.each do |clothing| %>
         <div class="col-md-4" >
@@ -33,5 +34,5 @@
       <% end %>
     </div>
 <% end %>
-
+<div class="row top-buffer"></div>
 <%= paginate @clothings, theme: 'twitter-bootstrap-4' %>
