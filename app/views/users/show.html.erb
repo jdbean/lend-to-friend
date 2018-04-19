@@ -3,13 +3,13 @@
 
 <img src=<%= @user.avatar %>><br/>
 <h3><%= link_to @user.name, @user %></h3>
-Email:<%= mail_to "#{@user.email}", @user.email %><br>
+<b>Email:</b> <%= mail_to "#{@user.email}", @user.email %><br>
 <% if @user.phone && @user.phone != "" %>
-Phone Number: <%= @user.phone %><br/>
+<b>Phone Number:</b> <%= @user.phone %><br/>
 <% end %>
 
 <% if @user.street_address && @user.street_address != "" && @user.city && @user.city != "" && @user.state && @user.state != "" && @user.zipcode && @user.zipcode != "" %>
-Address: <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= @user.zipcode %><br/>
+<b>Address:</b> <%= @user.street_address %>, <%= @user.city %>, <%= @user.state %> <%= @user.zipcode %><br/>
 <% end %>
 <br/>
 <% if current_user.id == @user.id %>
