@@ -8,7 +8,7 @@
   <h2>Outstanding Loans</h2>
   <% if !@current_loans.empty? %>
     <% @current_loans.each do |loan| %>
-      <img src="<%= loan.item.image %>"><br>
+      <img src="<%= loan.item.image %>"><br></br>
 
       <% if loan.overdue? %>
         <% loan.overdue = true %>
@@ -22,7 +22,7 @@
 
       <%= form_tag rating_update_path, method: :post do %>
         <%= hidden_field_tag 'id', loan.id %>
-        <%= submit_tag "Return Item" %>
+        <%= submit_tag "Return Item" %><br></br>
       <% end %>
     <% end %>
   <% else %>
