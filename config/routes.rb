@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   post "borrow", to: "loans#create", as: "borrow"
   post "return", to: "loans#update", as: "return"
+  get "rating", to: "loans#rating", as: "rating"
+  post "rating", to: "loans#rating", as: "rating_update"
 
   get '/games', to: "items#games", as: "games"
   get '/movies', to: "items#movies", as: "movies"

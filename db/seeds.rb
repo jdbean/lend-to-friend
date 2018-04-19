@@ -199,7 +199,8 @@ end
     item_id: Faker::Number.between(1, 180),
     borrower_id: Faker::Number.between(1, 131),
     loaned: Faker::Date.between(6.days.ago, Date.today),
-    returned: Faker::Date.between(2.days.ago, 1.week.from_now))
+    returned: Faker::Date.between(2.days.ago, 1.week.from_now),
+    rating: rand(1..5))
 end
 
 25.times do
@@ -207,5 +208,6 @@ end
     item_id: Faker::Number.between(1, 180),
     borrower_id: Faker::Number.between(1, 131),
     loaned: Faker::Date.between(6.days.ago, Date.today),
-    returned: nil)
+    returned: nil,
+    rating: nil)
 end

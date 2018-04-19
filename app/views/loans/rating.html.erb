@@ -1,0 +1,10 @@
+<%= render "errors" %>
+
+<h1>Rate Your Loan!</h1>
+
+<%= form_tag return_path, method: :post do %>
+  <label>Please rate this loan on a scale from 1-5:</label><br>
+  <%= hidden_field_tag 'id', @loan.id %>
+  <%= text_field_tag :'loan[rating]'  %>
+  <%= submit_tag "Rate & Return Item" %>
+<% end %>

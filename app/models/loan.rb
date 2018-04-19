@@ -5,6 +5,7 @@
 #  id          :integer          not null, primary key
 #  item_id     :integer
 #  borrower_id :integer
+#  rating      :integer
 #  loaned      :datetime
 #  returned    :datetime
 #
@@ -19,6 +20,7 @@ class Loan < ApplicationRecord
   belongs_to :item
   belongs_to :borrower, class_name: "User", foreign_key: "borrower_id"
   validates_with LoanValidator, on: :create
+  validates :rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, on: :update
 
   attr_accessor :type
 
