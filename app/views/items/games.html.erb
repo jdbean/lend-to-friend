@@ -10,11 +10,21 @@
             <img class="card-img-top" src=<%= game.image %>>
             <div class="card-body">
               <p class="card-text"><%= game.title %></p>
+              <p class="card-text">Average Rating: <%= game.get_average_rating %></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= button_to "view", game, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
                 </div>
-                <!-- <small class="text-muted">9 mins</small> -->
+                <% if game.is_available? %>
+                  <small class="text-primary">Available</small>
+                <% else %>
+                  <% if game.get_loans.any? %>
+                    <% if game.get_loans.last.overdue %>
+                      <small class="text-danger">Overdue</small>
+                    <% end %>
+                  <% end %>
+                  <small class="text-muted">Check back on <%= game.get_loans.last.due_date %></small>
+                <% end %>
               </div>
             </div>
           </div>

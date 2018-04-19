@@ -47,6 +47,29 @@ class Item < ApplicationRecord
   end
 
 
+  def get_average_rating
+    total = 0
+    rating_count = 0
+
+    if !self.get_loans.empty?
+      self.get_loans.each do |loan|
+        if loan.rating != nil
+          rating_count += 1
+          total += loan.rating
+        end
+      end
+
+      if rating_count > 0
+        "#{total/rating_count}/5"
+      else
+        "None"
+      end
+
+    else
+      "None"
+    end
+  end
+
   def self.loans_by_day
     collection = self.all.collect do |loan|
       loan.get_loans
