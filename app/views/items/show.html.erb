@@ -1,6 +1,6 @@
 <%= render "errors" %>
 <%= render "layouts/overdue" %>
-
+<div class="w-50">
 <h3><%= link_to @item.title, @item %></h3>
 <img src="<%= @item.image %>"><br/>
 <b>Owner Name:</b> <%= link_to @user.name, @user %><br/>
@@ -40,3 +40,4 @@
 <% if current_user.id == @item.user_id%>
   <%= link_to 'Edit Item', edit_item_path, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
 <% end %>
+</div>
