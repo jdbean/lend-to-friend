@@ -56,9 +56,10 @@
     <p>You have no loans that have not been returned.</p>
   <% end %>
 
+  <hr>
+  <h2>Items by Category</h2>
+  <%= pie_chart @loans_all, donut: true, legend: "bottom", library: { animation: {easing: 'easeOutQuad', duration: 1000}} %>
+
 <% else %>
   <p>You have no loans. Click <%= link_to "here", items_path %> to get started!</p>
 <% end %>
-<hr>
-<h2>Items by Category</h2>
-<%= pie_chart @loans_all, donut: true, legend: "bottom", library: { animation: {easing: 'easeOutQuad', duration: 1000}} %>
