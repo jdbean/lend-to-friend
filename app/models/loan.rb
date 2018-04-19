@@ -43,11 +43,11 @@ class Loan < ApplicationRecord
   #   end
   # end
   #
-  # def type
-  #   if self.item
-  #     self.item.type
-  #   end
-  # end
+  def type
+    if self.item
+      self.item.type
+    end
+  end
   #
   # def self.chart
   #   self.joins(:item).map {|loan|
@@ -74,11 +74,11 @@ class Loan < ApplicationRecord
   #   self.group(type)
   # end
   #
-  # def self.with_type
-  #   Loan.all.map do |l|
-  #     {type: l.type, data: l}
-  #   end
-  # end
+  def self.with_type
+    Loan.all.map do |l|
+      {type: l.type, data: l}
+    end
+  end
   #
   # def self.group_by_type
   #   self.with_type.group_by{|h| h[:type]}.values
