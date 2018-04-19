@@ -191,7 +191,8 @@ end
     title: Faker::Book.title,
     image: clothing_photos.sample,
     user_id: Faker::Number.between(1, 131),
-    description: Faker::Lorem.paragraph)
+    description: Faker::Lorem.paragraph
+  )
 end
 
 115.times do
@@ -200,14 +201,17 @@ end
     borrower_id: Faker::Number.between(1, 131),
     loaned: Faker::Date.between(6.days.ago, Date.today),
     returned: Faker::Date.between(2.days.ago, 1.week.from_now),
-    rating: rand(1..5))
+    rating: rand(1..5)
+  )
 end
 
-25.times do
+30.times do
   Loan.create(
     item_id: Faker::Number.between(1, 180),
     borrower_id: Faker::Number.between(1, 131),
-    loaned: Faker::Date.between(6.days.ago, Date.today),
+    loaned: Faker::Date.between(3.weeks.ago, 2.weeks.ago),
     returned: nil,
-    rating: nil)
+    rating: rand(1..5),
+    overdue: true
+  )
 end
