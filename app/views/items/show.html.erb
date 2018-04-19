@@ -1,4 +1,5 @@
 <%= render "errors" %>
+<%= render "layouts/overdue" %>
 
 <h3><%= link_to @item.title, @item %></h3>
 <img src="<%= @item.image %>"><br/>
@@ -22,7 +23,7 @@ Description: <%= @item.description %>
 <% if @item.is_available? %>
   <%= form_tag borrow_path, method: :post do %>
     <%= hidden_field_tag 'loan[item_id]', @item.id %>
-    <%= submit_tag "Borrow Item", :class => "btn btn-sm btn-outline-secondary" %>
+    <%= submit_tag "Borrow Item", :class => "btn btn-sm btn-outline-secondary", :data => {:confirm => 'Are you sure?'} %>
   <% end %>
 <% else %>
   <p>Sorry, this item is currently unavailable to borrow.</p>
