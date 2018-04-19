@@ -3,6 +3,7 @@
 <h1>All Movies</h1>
 
 <% @movies.each_slice(3) do |movies| %>
+    <div class="row top-buffer"></div>
     <div class="row">
       <% movies.each do |movie| %>
         <div class="col-md-4" >
@@ -33,5 +34,5 @@
       <% end %>
     </div>
 <% end %>
-
+<div class="row top-buffer"></div>
 <%= paginate @movies, theme: 'twitter-bootstrap-4' %>
