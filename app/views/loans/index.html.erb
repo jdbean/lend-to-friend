@@ -10,7 +10,7 @@
       <img src="<%= loan.item.image %>"><br>
       <%= link_to loan.item.title, loan.item %><br>
       Date Borrowed: <%= loan.loaned %><br></br>
-      <%= form_tag return_path, method: :post do %>
+      <%= form_tag rating_update_path, method: :post do %>
         <%= hidden_field_tag 'id', loan.id %>
         <%= submit_tag "Return Item" %>
       <% end %>
@@ -26,7 +26,8 @@
       <img src="<%= loan.item.image %>"><br>
       <%= link_to loan.item.title, loan.item %><br>
       Date Borrowed: <%= loan.loaned %><br>
-      Date Returned: <%= loan.returned %><br></br>
+      Date Returned: <%= loan.returned %><br>
+      Your Rating: <%= loan.rating %>/5<br></br>
     <% end %>
   <% else %>
     <p>You have no loans that have not been returned.</p>

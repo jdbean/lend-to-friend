@@ -1,6 +1,6 @@
 class LoansController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_loan, only: [:update]
+  before_action :get_loan, only: [:update, :rating]
   before_action :get_user, only: [:index, :create, :update]
 
   def index
@@ -24,11 +24,19 @@ class LoansController < ApplicationController
     end
   end
 
+  def rating
+  end
+
   def update
+    @loan.rating = loan_params[:rating]
     @loan.returned = Time.now
-    @loan.save
-    flash[:success] = "You have successfully returned this item!"
-    redirect_to user_loans_path(@user)
+    if @loan.save
+      flash[:success] = "You have successfully returned this item!"
+      redirect_to user_loans_path(@user)
+    else
+      flash[:errors] = @loan.errors.full_messages
+      render :rating
+    end
   end
 
   private
@@ -42,6 +50,6 @@ class LoansController < ApplicationController
   end
 
   def loan_params
-    params.require(:loan).permit(:item_id, :borrower_id, :loaned, :returned)
+    params.require(:loan).permit(:item_id, :borrower_id, :loaned, :returned, :rating)
   end
 end
