@@ -17,8 +17,8 @@
       <% end %>
 
       <%= link_to loan.item.title, loan.item %><br>
-      Date Borrowed: <%= loan.loaned.strftime("%b %d, %Y") %><br>
-      Due Date: <%= loan.due_date %><br></br>
+      <b>Date Borrowed:</b> <%= loan.loaned.strftime("%b %d, %Y") %><br>
+      <b>Due Date:</b> <%= loan.due_date %><br></br>
 
       <%= form_tag rating_update_path, method: :post do %>
         <%= hidden_field_tag 'id', loan.id %>
@@ -35,9 +35,9 @@
     <% @previous_loans.each do |loan| %>
       <img src="<%= loan.item.image %>"><br>
       <%= link_to loan.item.title, loan.item %><br>
-      Date Borrowed: <%= loan.loaned.strftime("%b %d, %Y") %><br>
-      Date Returned: <%= loan.returned.strftime("%b %d, %Y") %><br>
-      Your Rating: <%= loan.rating %>/5<br></br>
+      <b>Date Borrowed:</b> <%= loan.loaned.strftime("%b %d, %Y") %><br>
+      <b>Date Returned:</b> <%= loan.returned.strftime("%b %d, %Y") %><br>
+      <b>Your Rating:</b> <%= loan.rating %>/5<br></br>
     <% end %>
   <% else %>
     <p>You have no loans that have not been returned.</p>
