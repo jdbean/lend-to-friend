@@ -9,8 +9,8 @@
           <div class="card mb-4 box-shadow h-100">
             <img class="card-img-top" src=<%= book.image %>>
             <div class="card-body">
-              <p class="card-text lead"><%= book.title %></p>
-              <p class="card-text">Average Rating: <%= book.get_average_rating %></p>
+              <span class="card-text lead"><%= book.title %></span>
+              <p><small class="card-text"><span class="text-secondary">Average Rating:</span> <%= book.get_average_rating %></small></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= button_to "view", book, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>

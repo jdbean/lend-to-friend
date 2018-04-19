@@ -7,8 +7,8 @@
           <div class="card mb-3 box-shadow h-100">
             <img class="card-img-top" src=<%= book.image %>>
             <div class="card-body">
-              <p class="card-text"><%= book.title %></p>
-              <p class="card-text">Average Rating: <%= book.get_average_rating %></p>
+              <span class="card-text lead"><%= book.title %></span>
+              <p><small class="card-text"><span class="text-secondary">Average Rating:</span> <%= book.get_average_rating %></small></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= button_to "view", book, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
@@ -34,8 +34,8 @@
           <div class="card mb-3 box-shadow h-100">
             <img class="card-img-top" src=<%= game.image %>>
             <div class="card-body">
-              <p class="card-text"><%= game.title %></p>
-              <p class="card-text">Average Rating: <%= game.get_average_rating %></p>
+              <span class="card-text lead"><%= game.title %></span>
+              <p><small class="card-text"><span class="text-secondary">Average Rating:</span> <%= game.get_average_rating %></small></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= button_to "view", game, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
@@ -61,8 +61,8 @@
           <div class="card mb-3 box-shadow h-100">
             <img class="card-img-top" src=<%= movie.image %>>
             <div class="card-body">
-              <p class="card-text"><%= movie.title %></p>
-              <p class="card-text">Average Rating: <%= movie.get_average_rating %></p>
+              <span class="card-text lead"><%= movie.title %></span>
+              <p><small class="card-text"><span class="text-secondary">Average Rating:</span> <%= movie.get_average_rating %></small></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= button_to "view", movie, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
@@ -90,8 +90,8 @@
           <div class="card mb-3 box-shadow h-100">
             <img class="card-img-top" src=<%= item.image %>>
             <div class="card-body">
-              <p class="card-text"><%= item.title %></p>
-              <p class="card-text">Average Rating: <%= item.get_average_rating %></p>
+              <span class="card-text lead"><%= item.title %></span>
+              <p><small class="card-text"><span class="text-secondary">Average Rating:</span> <%= item.get_average_rating %></small></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= button_to "view", item, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
@@ -119,8 +119,8 @@
           <div class="card mb-3 box-shadow h-100">
             <img class="card-img-top" src=<%= item.image %>>
             <div class="card-body">
-              <p class="card-text"><%= item.title %></p>
-              <p class="card-text">Average Rating: <%= item.get_average_rating %></p>
+              <span class="card-text lead"><%= item.title %></span>
+              <p><small class="card-text"><span class="text-secondary">Average Rating:</span> <%= item.get_average_rating %></small></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= button_to "view", item, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>

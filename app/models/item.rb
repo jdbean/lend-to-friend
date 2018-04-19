@@ -62,11 +62,11 @@ class Item < ApplicationRecord
       if rating_count > 0
         "#{total/rating_count}/5"
       else
-        "None"
+        "Not yet rated"
       end
 
     else
-      "None"
+      "Not yet rated"
     end
   end
 

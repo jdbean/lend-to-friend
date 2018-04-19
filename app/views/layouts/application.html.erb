@@ -33,7 +33,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="/users/<%=current_user.id%>/loans">My Loans</a>
               <a class="dropdown-item" href="/users/<%=current_user.id%>/edit">Account Settings</a>
-              <%=link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item"%>
+              <%=link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item", :data => {:confirm => 'Are you sure?'}%>
             </div>
           </li>
         </ul>
