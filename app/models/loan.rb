@@ -79,6 +79,42 @@ class Loan < ApplicationRecord
       {type: l.type, data: l}
     end
   end
+
+  def self.grouped_by_type
+    array = self.with_type
+    group_hash = {}
+
+    array.each do |loan_hash|
+      key = loan_hash[:type]
+      data = loan_hash[:data]
+
+      if group_hash.has_key?(key)
+        group_hash[key] << data
+      else
+        group_hash[key] = []
+        group_hash[key] << data
+      end
+    end
+    group_hash
+  end
+
+  def self.loan_type_array
+    loan_hash = self.grouped_by_type
+    pairing_array = []
+
+    loan_hash.each_pair do |k,v|
+      new_hash = {}
+      new_hash[:name] = k
+      new_hash[:data] = v
+      pairing_array << new_hash
+    end
+    pairing_array
+  end
+
+  # output[0][:data].group_by_day(&:loaned)
+
+
+
   #
   # def self.group_by_type
   #   self.with_type.group_by{|h| h[:type]}.values
