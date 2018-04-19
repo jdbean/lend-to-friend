@@ -1,15 +1,6 @@
 <%= render "layouts/overdue" %>
 
 <h1>All Users</h1>
-<h2> Top Ten Sharers </h2>
-<%=column_chart User.top_10_loaners, ytitle: "Number of Items Shared", xtitle: "User Name" %>
-<h2> Loans By Day Of The Week </h2>
-<%= column_chart Loan.group_by_day_of_week(:loaned, format: "%a").count, ytitle: "Loans Made", xtitle: "Day of Week" %>
-<h2> Loans by Item Type </h2>
-<%= pie_chart Item.by_type.count %>
-
-<%= line_chart Loan.loan_type_array %>
-
 
 <% @users.each_slice(3) do |users| %>
     <div class="row">
