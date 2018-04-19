@@ -5,6 +5,8 @@ class LoansController < ApplicationController
 
   def index
     @loans = @user.loans
+    @loans_all = @user.loans.collect { |l| l.type}
+    @loans_all = @loans_all.each_with_object(Hash.new(0)) {|e, h| h[e] += 1}
     @current_loans = @loans.select { |loan| !loan.item.is_available? && loan.returned == nil }
     @previous_loans = @loans.select { |loan| loan.item.is_available? || loan.returned != nil }
   end
