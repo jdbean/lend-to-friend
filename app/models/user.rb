@@ -102,4 +102,8 @@ class User < ApplicationRecord
   def get_households
     self.household_items.where("type = 'Household'")
   end
+
+  def any_overdue_items?
+    self.loans.select { |loan| loan.overdue }.any?
+  end
 end
