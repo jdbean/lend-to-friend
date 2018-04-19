@@ -22,7 +22,7 @@
                 <% else %>
                   <% if game.get_loans.any? %>
                     <% if game.get_loans.last.overdue %>
-                      <span style="text-align:center;"><small class="text-danger">Overdue</small></span>
+                      <span style="float:right;"><small class="text-danger">(overdue!)</small></span>
                     <% end %>
                   <% end %>
                   <span style="float:right;"><small class="text-muted">Check back on <%= game.get_loans.last.due_date %></small></span>

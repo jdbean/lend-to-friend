@@ -22,7 +22,7 @@
                 <% else %>
                   <% if clothing.get_loans.any? %>
                     <% if clothing.get_loans.last.overdue %>
-                      <span style="text-align:center;"><small class="text-danger">Overdue</small></span>
+                      <span style="float:right;"><small class="text-danger">(overdue!)</small></span>
                     <% end %>
                   <% end %>
                   <span style="float:right;"><small class="text-muted">Check back on <%= clothing.get_loans.last.due_date %></small></span>
