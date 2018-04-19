@@ -8,7 +8,7 @@
       <% movies.each do |movie| %>
         <div class="col-md-4" >
           <div class="card mb-4 box-shadow h-100">
-            <img class="card-img-top" src=<%= movie.image %>>
+            <img class="card-img-top" src="<%= movie.image %>"><br></br>
             <div class="card-body d-flex flex-column">
               <span class="card-text lead"><%= movie.title %></span>
               <p><small class="card-text"><span class="text-secondary">Average Rating:</span> <%= movie.get_average_rating %></small></p>
