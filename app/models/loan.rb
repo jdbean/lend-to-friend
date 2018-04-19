@@ -8,6 +8,7 @@
 #  rating      :integer
 #  loaned      :datetime
 #  returned    :datetime
+#  overdue     :boolean          default(FALSE)
 #
 # Indexes
 #
@@ -20,7 +21,8 @@ class Loan < ApplicationRecord
   belongs_to :item
   belongs_to :borrower, class_name: "User", foreign_key: "borrower_id"
   validates_with LoanValidator, on: :create
-  validates :rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, on: :update
+  validates :loaned, presence: true
+  validates :rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, on: :update, if: :return_requested?
 
   attr_accessor :type
 
@@ -101,7 +103,14 @@ class Loan < ApplicationRecord
   def self.loan_type_array
     loan_hash = self.grouped_by_type
     pairing_array = []
-
+    loan_hash.each do |k,v|
+      loan_hash[k] = v.group_by_day(&:loaned)
+    end
+    loan_hash.each do |k,v|
+      v.each do |date, array|
+        v[date] = array.count
+      end
+    end
     loan_hash.each_pair do |k,v|
       new_hash = {}
       new_hash[:name] = k
@@ -111,6 +120,14 @@ class Loan < ApplicationRecord
     pairing_array
   end
 
+  def self.loan_type_array_grouped
+    self.loan_type_array.collect |type|
+      type[:data].
+    end
+  end
+
+
+
   # output[0][:data].group_by_day(&:loaned)
 
 
@@ -119,4 +136,16 @@ class Loan < ApplicationRecord
   # def self.group_by_type
   #   self.with_type.group_by{|h| h[:type]}.values
   # end
+
+  def return_requested?
+    self.returned != nil
+  end
+
+  def due_date
+    (self.loaned + 7.days).strftime("%b %d, %Y")
+  end
+
+  def overdue?
+    self.due_date < Time.now
+  end
 end

@@ -1,4 +1,5 @@
 <%= render "errors" %>
+
 <h1>My Loans</h1>
 
 <hr>
@@ -7,12 +8,21 @@
   <h2>Outstanding Loans</h2>
   <% if !@current_loans.empty? %>
     <% @current_loans.each do |loan| %>
-      <img src="<%= loan.item.image %>"><br>
+      <img src="<%= loan.item.image %>"><br></br>
+
+      <% if loan.overdue? %>
+        <% loan.overdue = true %>
+        <% loan.save %>
+        <div class="alert alert-danger">This item is overdue!</div>
+      <% end %>
+
       <%= link_to loan.item.title, loan.item %><br>
-      Date Borrowed: <%= loan.loaned %><br></br>
+      Date Borrowed: <%= loan.loaned.strftime("%b %d, %Y") %><br>
+      Due Date: <%= loan.due_date %><br></br>
+
       <%= form_tag rating_update_path, method: :post do %>
         <%= hidden_field_tag 'id', loan.id %>
-        <%= submit_tag "Return Item" %>
+        <%= submit_tag "Return Item" %><br></br>
       <% end %>
     <% end %>
   <% else %>
@@ -25,8 +35,8 @@
     <% @previous_loans.each do |loan| %>
       <img src="<%= loan.item.image %>"><br>
       <%= link_to loan.item.title, loan.item %><br>
-      Date Borrowed: <%= loan.loaned %><br>
-      Date Returned: <%= loan.returned %><br>
+      Date Borrowed: <%= loan.loaned.strftime("%b %d, %Y") %><br>
+      Date Returned: <%= loan.returned.strftime("%b %d, %Y") %><br>
       Your Rating: <%= loan.rating %>/5<br></br>
     <% end %>
   <% else %>

@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   get '/clothings', to: "items#clothings", as: "clothings"
 
   # user_root to: 'users#index'
+  get '/stats', to: "lytics#index", as: "lytics"
 
 end
