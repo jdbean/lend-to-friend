@@ -6,6 +6,9 @@
 <h2> Loans by Item Type </h2>
 <%= pie_chart Item.by_type.count %>
 
+<%= line_chart Loan.loan_type_array %>
+
+
 <% @users.each_slice(3) do |users| %>
     <div class="row">
       <% users.each do |user| %>
