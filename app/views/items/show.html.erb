@@ -3,17 +3,18 @@
 
 <h3><%= link_to @item.title, @item %></h3>
 <img src="<%= @item.image %>"><br/>
-Owner Name: <%= link_to @user.name, @user %><br/>
+<b>Owner Name:</b> <%= link_to @user.name, @user %><br/>
+<b>Average rating:</b> <%= @item.get_average_rating %> <br/>
 <% if @item.author && @item.author != "" %>
-Author: <%= @item.author %><br/>
+  <b>Author:</b> <%= @item.author %><br/>
 <% end %>
 
 <% if @item.genre && @item.genre != "" %>
-Genre: <%= @item.genre %><br/>
+  <b>Genre:</b> <%= @item.genre %><br/>
 <% end %>
 
 <% if @item.description && @item.description != "" %>
-Description: <%= @item.description %>
+  <b>Description:</b> <%= @item.description %>
 <% end %>
 <br/>
 <br/>
@@ -26,7 +27,13 @@ Description: <%= @item.description %>
     <%= submit_tag "Borrow Item", :class => "btn btn-sm btn-outline-secondary", :data => {:confirm => 'Are you sure?'} %>
   <% end %>
 <% else %>
-  <p>Sorry, this item is currently unavailable to borrow.</p>
+  <p>Sorry, this item is currently unavailable to borrow. Check back on <b><%= @item.get_loans.last.due_date %></b></p>
+
+  <% if @item.get_loans.any? %>
+    <% if @item.get_loans.last.overdue %>
+      <p class="text-danger">Overdue Item</p>
+    <% end %>
+  <% end %>
 <% end %>
 <hr>
 
