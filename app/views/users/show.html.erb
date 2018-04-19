@@ -1,8 +1,8 @@
 <%= render "errors" %>
 
 <img src=<%= @user.avatar %>><br/>
-<h3><%= link_to @user.name, users_path %></h3>
-Email: <%= @user.email %><br>
+<h3><%= link_to @user.name, @user %></h3>
+Email:<%= mail_to "#{@user.email}", @user.email %><br>
 <% if @user.phone && @user.phone != "" %>
 Phone Number: <%= @user.phone %><br/>
 <% end %>

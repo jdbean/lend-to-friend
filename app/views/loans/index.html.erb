@@ -4,8 +4,8 @@
 <hr>
 <% if !@loans.empty? %>
 
+  <h2>Outstanding Loans</h2>
   <% if !@current_loans.empty? %>
-    <h2>Outstanding Loans</h2>
     <% @current_loans.each do |loan| %>
       <img src="<%= loan.item.image %>"><br>
       <%= link_to loan.item.title, loan.item %><br>
@@ -20,8 +20,8 @@
   <% end %>
 
   <hr>
+  <h2>Previous Loans</h2>
   <% if !@previous_loans.empty? %>
-    <h2>Previous Loans</h2>
     <% @previous_loans.each do |loan| %>
       <img src="<%= loan.item.image %>"><br>
       <%= link_to loan.item.title, loan.item %><br>
