@@ -7,24 +7,37 @@
 
   <h2>Outstanding Loans</h2>
   <% if !@current_loans.empty? %>
-    <% @current_loans.each do |loan| %>
-      <img src="<%= loan.item.image %>"><br></br>
-
-      <% if loan.overdue? %>
-        <% loan.overdue = true %>
-        <% loan.save %>
-        <div class="alert alert-danger">This item is overdue!</div>
-      <% end %>
-
-      <%= link_to loan.item.title, loan.item %><br>
-      <b>Date Borrowed:</b> <%= loan.loaned.strftime("%b %d, %Y") %><br>
-      <b>Due Date:</b> <%= loan.due_date %><br></br>
-
-      <%= form_tag rating_update_path, method: :post do %>
-        <%= hidden_field_tag 'id', loan.id %>
-        <%= submit_tag "Return Item" %><br></br>
-      <% end %>
+    <% @current_loans.each_slice(4) do |current_loans| %>
+      <div class="row top-buffer"></div>
+      <div class="row">
+        <% current_loans.each do |loan| %>
+          <div class="col-md-3 col-md-offset-1" >
+            <div class="card mb-3 box-shadow h-100">
+              <img class="card-img-top" src="<%= loan.item.image %>">
+              <div class="card-body d-flex flex-column">
+                <% if loan.overdue? %>
+                  <% loan.overdue = true %>
+                  <% loan.save %>
+                  <div class="alert alert-danger">This item is overdue!</div>
+                <% end %>
+                <span class="card-text lead"><%= link_to loan.item.title, loan.item %></span>
+                <span style="float:right;"><b>Borrowed:</b> <%= loan.loaned.strftime("%b %d, %Y") %><br></span>
+                <span style="float:right;"><b>Due:</b> <%= loan.due_date %><br></br></span>
+                <div class= "mt-auto">
+                  <div class="btn-group">
+                    <%= form_tag rating_update_path, method: :post do %>
+                      <%= hidden_field_tag 'id', loan.id %>
+                      <%= submit_tag "Return Item" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
+
   <% else %>
     <p>Congratulations! You have no outstanding loans. Click <%= link_to "here", items_path %> to loan an item!</p>
   <% end %>
@@ -32,20 +45,33 @@
   <hr>
   <h2>Previous Loans</h2>
   <% if !@previous_loans.empty? %>
-    <% @previous_loans.each do |loan| %>
-      <img src="<%= loan.item.image %>"><br>
-      <%= link_to loan.item.title, loan.item %><br>
-      <b>Date Borrowed:</b> <%= loan.loaned.strftime("%b %d, %Y") %><br>
-      <b>Date Returned:</b> <%= loan.returned.strftime("%b %d, %Y") %><br>
-      <b>Your Rating:</b> <%= loan.rating %>/5<br></br>
-    <% end %>
+    <% @previous_loans.each_slice(4) do |previous_loans| %>
+      <div class="row top-buffer"></div>
+      <div class="row">
+        <% previous_loans.each do |loan| %>
+          <div class="col-md-3 col-md-offset-1" >
+            <div class="card mb-3 box-shadow h-100">
+              <img class="card-img-top" src="<%= loan.item.image %>">
+                <div class="card-body d-flex flex-column">
+                  <span class="card-text lead"><%= link_to loan.item.title, loan.item %></span>
+                  <span style="float:right;"><b>Borrowed:</b> <%= loan.loaned.strftime("%b %d, %Y") %></span>
+                  <span style="float:right;"><b>Returned:</b> <%= loan.returned.strftime("%b %d, %Y") %></span>
+                  <span style="float:right;"><b>Your Rating:</b> <%= loan.rating %>/5</span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
   <% else %>
     <p>You have no loans that have not been returned.</p>
   <% end %>
 
+  <hr>
+  <h2>Items by Category</h2>
+  <%= pie_chart @loans_all, donut: true, legend: "bottom", library: { animation: {easing: 'easeOutQuad', duration: 1000}} %>
+
 <% else %>
   <p>You have no loans. Click <%= link_to "here", items_path %> to get started!</p>
 <% end %>
-<hr>
-<h2>Items by Category</h2>
-<%= pie_chart @loans_all, donut: true, legend: "bottom", library: { animation: {easing: 'easeOutQuad', duration: 1000}} %>
