@@ -51,6 +51,7 @@ class ItemsController < ApplicationController
     @user = current_user
 
     @item = @user.send(@type.pluralize).create(item_params)
+
     if @item.valid?
       flash[:success] = "Item added!"
       redirect_to @item
