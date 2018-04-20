@@ -159,7 +159,6 @@ User.create(
 end
 
 
-
 20.times do
   Movie.create(
     title: Faker::Book.title,
@@ -205,13 +204,23 @@ end
   )
 end
 
-30.times do
+40.times do
+  Loan.create(
+    item_id: Faker::Number.between(1, 180),
+    borrower_id: Faker::Number.between(1, 131),
+    loaned: Faker::Date.between(6.days.ago, Date.today),
+    returned: nil,
+    rating: nil
+  )
+end
+
+10.times do
   Loan.create(
     item_id: Faker::Number.between(1, 180),
     borrower_id: Faker::Number.between(1, 131),
     loaned: Faker::Date.between(3.weeks.ago, 2.weeks.ago),
     returned: nil,
-    rating: rand(1..5),
+    rating: nil,
     overdue: true
   )
 end

@@ -19,12 +19,9 @@
                 </div>
                 <% if movie.is_available? %>
                   <span style="float:right;"><small class="text-primary">Available</small></span>
+                <% elsif movie.get_loans.any? && movie.get_loans.last.overdue%>
+                  <span style="float:right;"><small class="text-danger">Overdue</small></span>
                 <% else %>
-                  <% if movie.get_loans.any? %>
-                    <% if movie.get_loans.last.overdue %>
-                      <span style="float:right;"><small class="text-danger">(overdue!)</small></span>
-                    <% end %>
-                  <% end %>
                   <span style="float:right;"><small class="text-muted">Check back on <%= movie.get_loans.last.due_date %></small></span>
                 <% end %>
               </div>

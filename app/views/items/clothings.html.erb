@@ -19,12 +19,9 @@
                 </div>
                 <% if clothing.is_available? %>
                   <span style="float:right;"><small class="text-primary">Available</small></span>
+                <% elsif clothing.get_loans.any? && clothing.get_loans.last.overdue %>
+                  <span style="float:right;"><small class="text-danger">Overdue</small></span>
                 <% else %>
-                  <% if clothing.get_loans.any? %>
-                    <% if clothing.get_loans.last.overdue %>
-                      <span style="float:right;"><small class="text-danger">(overdue!)</small></span>
-                    <% end %>
-                  <% end %>
                   <span style="float:right;"><small class="text-muted">Check back on <%= clothing.get_loans.last.due_date %></small></span>
                 <% end %>
               </div>
