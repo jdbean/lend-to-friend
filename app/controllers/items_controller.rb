@@ -47,17 +47,17 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @type = params[:item][:type].downcase
+    @type_downcase = params[:item][:type].downcase
     @user = current_user
 
-    @item = @user.send(@type.pluralize).create(item_params)
+    @item = @user.send(@type_downcase.pluralize).create(item_params)
 
     if @item.valid?
       flash[:success] = "Item added!"
       redirect_to @item
     else
       flash[:errors] = @item.errors.full_messages
-      redirect_to "/users/#{@user.id}/#{@type.pluralize}/new"
+      redirect_to "/users/#{@user.id}/#{@type_downcase.pluralize}/new"
     end
   end
 

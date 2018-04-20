@@ -27,6 +27,7 @@ class Item < ApplicationRecord
   scope :households, -> { where(type: 'Household')}
   scope :clothings, -> { where(type: 'Clothing')}
   validates :title, presence: true
+  validates :type, presence: true, inclusion: { in: %w(Book Game Movie Household Clothing) }
 
   # delegate :type, to: :loan, prefix: true
 
