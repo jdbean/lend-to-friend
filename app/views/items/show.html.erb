@@ -40,4 +40,5 @@
 <% if current_user.id == @item.user_id%>
   <%= link_to 'Edit Item', edit_item_path, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
 <% end %>
+<%= button_to "Back", :back, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
 </div>
