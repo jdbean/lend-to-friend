@@ -27,7 +27,7 @@
                   <div class="btn-group">
                     <%= form_tag rating_update_path, method: :post do %>
                       <%= hidden_field_tag 'id', loan.id %>
-                      <%= submit_tag "Return Item" %>
+                      <%= submit_tag "Return Item", class: "btn btn-sm btn-outline-secondary" %>
                     <% end %>
                   </div>
                 </div>

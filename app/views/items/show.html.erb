@@ -1,9 +1,9 @@
 <%= render "errors" %>
 <%= render "layouts/overdue" %>
 <div class="w-50">
-<h3><%= link_to @item.title, @item %></h3>
+<h1><%= link_to @item.title, @item %></h1>
 <img src="<%= @item.image %>"><br/>
-<b>Owner Name:</b> <%= link_to @user.name, @user %><br/>
+<b>Owner:</b> <%= link_to @user.name, @user %><br/>
 <b>Average rating:</b> <%= @item.get_average_rating %> <br/>
 <% if @item.author && @item.author != "" %>
   <b>Author:</b> <%= @item.author %><br/>

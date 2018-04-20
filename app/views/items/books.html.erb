@@ -17,15 +17,12 @@
                 <div class="btn-group">
                   <%= button_to "view", book, :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
                 </div>
-                  <% if book.is_available? %>
-                    <span style="float:right;"><small class="text-primary">Available</small></span>
-                  <% else %>
-                    <% if book.get_loans.any? %>
-                      <% if book.get_loans.last.overdue %>
-                        <span style="float:right;"><small class="text-danger">(overdue!)</small></span>
-                      <% end %>
-                    <% end %>
-                  <span style="float:right;"><small class="text-muted">Check back on <%= book.get_loans.last.due_date %></small></span>
+                <% if book.is_available? %>
+                  <span style="float:right;"><small class="text-primary">Available</small></span>
+                <% elsif book.get_loans.any? && book.get_loans.last.overdue %>
+                    <span style="float:right;"><small class="text-danger">Overdue</small></span>
+                <% else %>
+                    <span style="float:right;"><small class="text-muted">Check back on <%= book.get_loans.last.due_date %></small></span>
                 <% end %>
               </div>
             </div>
