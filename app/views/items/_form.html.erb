@@ -1,28 +1,17 @@
-<%= form_with model: @item do |f| %>
+<%= simple_form_for @item do |f| %>
   <%= f.hidden_field :type, value: @type %>
-  <br></br>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-  <br></br>
+
+  <%= f.input :title, label: 'Title' %>
 
   <% if @type == 'Book' %>
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-    <br></br>
-    <%= f.label :genre %><br>
-    <%= f.text_field :genre %>
-    <br></br>
+    <%= f.input :author, label: 'Author' %>
+    <%= f.input :genre, label: 'Genre' %>
   <% elsif @type == 'Game' || @type == 'Movie' %>
-    <%= f.label :genre %><br>
-    <%= f.text_field :genre %>
-    <br></br>
+    <%= f.input :genre, label: 'Genre' %>
   <% end %>
 
-  <%= f.label :description %><br>
-  <%= f.text_area :description %>
-  <br></br>
-  <%= f.label :image %><br>
-  <%= f.text_field :image %>
-  <br></br>
-  <%= f.submit %>
+  <%= f.input :description, label: 'Description' %>
+  <%= f.input :image, label: 'Image' %>
+
+  <%= f.button :submit, :class => "btn btn-md btn-outline-secondary" %>
 <% end %>
