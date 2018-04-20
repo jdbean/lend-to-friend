@@ -1,6 +1,6 @@
 <%= render "errors" %>
 <%= render "layouts/overdue" %>
-<div class="w-50">
+
 <h1><%= link_to @item.title, @item %></h1>
 <img src="<%= @item.image %>"><br/>
 <b>Owner:</b> <%= link_to @user.name, @user %><br/>
