@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery3
-//= require jquery_ujs
 //= require Chart.bundle
 //= require chartkick
 //= require popper
@@ -20,3 +19,4 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery_ujs
