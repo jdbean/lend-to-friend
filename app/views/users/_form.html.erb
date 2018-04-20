@@ -1,27 +1,12 @@
-<%= form_with model: @user do |f| %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
-  <br><br/>
-  <%= f.label :email %><br>
-  <%= f.text_field :email %>
-  <br><br/>
-  <%= f.label :phone %><br>
-  <%= f.text_field :phone %>
-  <br><br/>
-  <%= f.label :street_address %><br>
-  <%= f.text_field :street_address %>
-  <br><br/>
-  <%= f.label :city %><br>
-  <%= f.text_field :city %>
-  <br><br/>
-  <%= f.label :state %><br>
-  <%= f.text_field :state %>
-  <br><br/>
-  <%= f.label :zipcode %><br>
-  <%= f.text_field :zipcode %>
-  <br><br/>
-  <%= f.label :avatar_url %><br>
-  <%= f.text_field :avatar%>
-  <br><br/>
-  <%= f.submit %>
+<%= simple_form_for @user do |f| %>
+  <%= f.input :name, label: 'Name' %>
+  <%= f.input :email, label: 'Email' %>
+  <%= f.input :phone, label: 'Phone' %>
+  <%= f.input :street_address, label: 'Street Address' %>
+  <%= f.input :city, label: 'City' %>
+  <%= f.input :state, label: 'State' %>
+  <%= f.input :zipcode, label: 'Zipcode' %>
+  <%= f.input :avatar, label: 'Avatar URL' %>
+
+  <%= f.button :submit, :class => "btn btn-md btn-outline-secondary" %>
 <% end %>

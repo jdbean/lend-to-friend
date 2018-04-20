@@ -2,7 +2,7 @@
 <%= render "layouts/overdue" %>
 
 <img src=<%= @user.avatar %>><br/>
-<h1><%= link_to @user.name, @user %></h1>
+<h1><%= @user.name %></h1>
 <b>Email:</b> <%= mail_to "#{@user.email}", @user.email %><br>
 <% if @user.phone && @user.phone != "" %>
 <b>Phone Number:</b> <%= @user.phone %><br/>
