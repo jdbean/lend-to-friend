@@ -26,8 +26,6 @@ class Item < ApplicationRecord
   validates :title, presence: true
   validates :type, presence: true, inclusion: { in: %w(Book Game Movie Household Clothing) }
 
-  # delegate :type, to: :loan, prefix: true
-
   def is_available?
     # Check to see if item's loan array is empty.
       # If empty, item is available for loan
@@ -78,19 +76,9 @@ class Item < ApplicationRecord
     group_by_day(collection.flatten)
   end
 
-  # def self.last_nine
-  #   #returns the last 9 items added to the DB
-  #   self.last(9)
-  # end
-  #
   def self.by_type
     self.group(:type)
   end
 
-  # def self.type_by_loan_date
-  #   self.item_by_type.each do |type|
-  #     type
-  #   end
-  # end
 
 end

@@ -27,13 +27,6 @@
 <% else %>
   <p>Currently not sharing any items.</p>
 <% end %>
-<!-- Lent Items:
-<ul>
-  <% @user.borrowed_items.each do |item| %>
-    <li><%= link_to item.title, item %></li>
-  <% end %>
-</ul>
-<hr> -->
 
 <% if current_user.id == @user.id %>
   <%= link_to 'Add Book', new_user_book_path(@user), :method => "get", :class => "btn btn-sm btn-outline-secondary" %>
