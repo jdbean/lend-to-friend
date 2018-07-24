@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project Overview
 
-Things you may want to cover:
+Lend-to-Friend is a peer-to-peer lending application for books, movies, music, household items, and clothing.
 
-* Ruby version
+## Demo
 
-* System dependencies
+A [demo of the project](https://pacific-earth-11787.herokuapp.com/users) is available. Please note that the demo is running on a auto-sleeping Heroku dyno and may require a few moments to start up when first loading. A demo Lend-to-Friend account can be accessed by logging in with the following credentials:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Username: `lf@lf.com`  
+Password: `password`

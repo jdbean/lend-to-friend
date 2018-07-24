@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, path: 'auth', controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
-  # devise_for :users, path: 'auth'
 
   root to: 'welcome#index'
-  # user_root_path to: 'users#index'
-  # root to: "home#index"
 
   resources :users do
     resources :books, controller: :items, type: 'Book'
@@ -29,7 +26,6 @@ Rails.application.routes.draw do
   get '/households', to: "items#households", as: "households"
   get '/clothings', to: "items#clothings", as: "clothings"
 
-  # user_root to: 'users#index'
   get '/stats', to: "lytics#index", as: "lytics"
 
 end
