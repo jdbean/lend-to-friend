@@ -93,7 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # MAILER DUMPS TO LOCALHOST
-  config.action_mailer.default_url_options = { protocol: 'https', host: ENV['host'] }
+  config.action_mailer.default_url_options = { protocol: 'https', host: ENV['HOST'] }
 
   # Mailer Config For ActionMailer to user Mail GUn
   ActionMailer::Base.smtp_settings = {
